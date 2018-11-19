@@ -50,3 +50,5 @@ C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\Obligatorio2\bin\es\System.W
 C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\Obligatorio2\obj\Debug\Obligatorio2.csprojResolveAssemblyReference.cache
 C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\Obligatorio2\obj\Debug\Obligatorio2.dll
 C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\Obligatorio2\obj\Debug\Obligatorio2.pdb
+C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\Obligatorio2\bin\ObligatorioDominio.dll
+C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\Obligatorio2\bin\ObligatorioDominio.pdb
