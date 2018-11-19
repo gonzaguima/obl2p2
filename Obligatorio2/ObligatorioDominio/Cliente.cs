@@ -2,7 +2,7 @@
 
 namespace ObligatorioDominio
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
         private string nombre;
         private string apellido;

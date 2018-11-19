@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObligatorioDominio
 {
-    public class Usuario
+    public abstract class Usuario
     {
         public string User { get; set; }
         public string Pass { get; set; }
