@@ -10,6 +10,7 @@ namespace ObligatorioDominio
     {   /*listados*/
         List<Cliente> clientes = new List<Cliente>();
         List<Edificio> edificios = new List<Edificio>();
+        List<Usuario> usuarios { get; set; } = new List<Usuario>();
         //instancia
         private static Sistema instancia;
 
@@ -20,6 +21,59 @@ namespace ObligatorioDominio
         public List<Edificio> Edificios
         {
             get { return edificios; }
+        }
+
+        //Metodos para Usuario.
+        public bool AltaUsuario(string user, string pass)
+        {
+            bool alta = false;
+            if (user != "" && pass != "")
+            {
+                Usuario u = BuscarUsuario(user);
+                if (u == null)
+                {
+                    u = new Usuario(user, pass);
+                    usuarios.Add(u);
+                    alta = true;
+                }
+            }
+            return alta;
+        }
+
+        private Usuario BuscarUsuario(string user)
+        {
+            Usuario u = null;
+            int i = 0;
+            while (i < usuarios.Count && u == null)
+            {
+                if (usuarios[i].User == user)
+                {
+                    u = usuarios[i];
+                }
+                i++;
+            }
+            return u;
+        }
+
+        public bool AltaUsuario(Usuario u)
+        {
+            bool alta = false;
+            if (!usuarios.Contains(u))
+            {
+                this.usuarios.Add(u);
+                alta = true;
+            }
+            return alta;
+        }
+
+        public bool ValidarUser(Usuario u)
+        {
+            bool existe = false;
+            if (usuarios.Contains(u))
+            {
+                existe = true;
+            }
+            return existe;
         }
 
         //crea un apartamento de tipo Oficina
