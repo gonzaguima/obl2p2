@@ -17,7 +17,9 @@ namespace Obligatorio2.Controllers
         [HttpPost]
         public ActionResult Index(Usuario c)
         {
-            if (Sistema.Instancia.ValidarUser(c)) { ViewBag.resultado = "Usuario valido."; }
+            if (Sistema.Instancia.ValidarUser(c)) {
+                ViewBag.resultado = "Usuario valido.";
+            }
             else { ViewBag.resultado = "Usuario invalido."; }
             return View();
         }
