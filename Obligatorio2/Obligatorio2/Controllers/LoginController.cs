@@ -12,6 +12,7 @@ namespace Obligatorio2.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            Session["User"] = null;
             return View();
         }
         [HttpPost]
@@ -19,6 +20,7 @@ namespace Obligatorio2.Controllers
         {
             if (Sistema.Instancia.ValidarUser(c)) {
                 ViewBag.resultado = "Usuario valido.";
+                Session["User"] = c.User;
             }
             else { ViewBag.resultado = "Usuario invalido."; }
             return View();
