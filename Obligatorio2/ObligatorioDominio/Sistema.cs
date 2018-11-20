@@ -24,21 +24,21 @@ namespace ObligatorioDominio
         }
 
         //Metodos para Usuario.
-        public bool AltaUsuario(string user, string pass)
-        {
-            bool alta = false;
-            if (user != "" && pass != "")
-            {
-                Usuario u = BuscarUsuario(user);
-                if (u == null)
-                {
-                    u = new Usuario(user, pass);
-                    usuarios.Add(u);
-                    alta = true;
-                }
-            }
-            return alta;
-        }
+        //public bool AltaUsuario(string user, string pass)
+        //{
+        //    bool alta = false;
+        //    if (user != "" && pass != "")
+        //    {
+        //        Usuario u = BuscarUsuario(user);
+        //        if (u == null)
+        //        {
+        //            u = new Usuario(user, pass);
+        //            usuarios.Add(u);
+        //            alta = true;
+        //        }
+        //    }
+        //    return alta;
+        //}
 
         private Usuario BuscarUsuario(string user)
         {
@@ -74,6 +74,14 @@ namespace ObligatorioDominio
                 existe = true;
             }
             return existe;
+        }
+
+        //ABM Clientes
+        public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        {
+            bool alta = false;
+            
+            return alta;
         }
 
         //crea un apartamento de tipo Oficina
