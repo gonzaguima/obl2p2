@@ -8,16 +8,12 @@ namespace ObligatorioDominio
 {
     public class Sistema
     {   /*listados*/
-        List<Cliente> clientes = new List<Cliente>();
+        List<Cliente> Clientes { get; set; } = new List<Cliente>();
         List<Edificio> edificios = new List<Edificio>();
         List<Usuario> usuarios { get; set; } = new List<Usuario>();
         //instancia
         private static Sistema instancia;
 
-        public List<Cliente> Clientes
-        {
-            get { return clientes; }
-        }
         public List<Edificio> Edificios
         {
             get { return edificios; }
@@ -80,8 +76,31 @@ namespace ObligatorioDominio
         public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
             bool alta = false;
-            
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "")
+            {
+                Cliente c = BuscarCliente(documento);
+                if (c == null)
+                {
+                    c = new Cliente(nombre, apellido, documento, direccion, telefono, user, pass);
+                    Clientes.Add(c);
+                    alta = true;
+                }
+            }
             return alta;
+        }
+        public Cliente BuscarCliente(string documento)
+        {
+            Cliente c = null;
+            int i = Clientes.Count;
+            while (i >= 0 && Clientes != null)
+            {
+                if (Clientes[i].Documento == documento)
+                {
+                    c = Clientes[i];
+                }
+                i--;
+            }
+            return c;
         }
 
         //crea un apartamento de tipo Oficina
