@@ -161,6 +161,7 @@
     <Content Include="Views\ABMCliente\Index.cshtml" />
     <Content Include="Views\ABMCliente\Alta.cshtml" />
     <Content Include="Views\ABMCliente\Baja.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,7 +172,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Venta\" />
   </ItemGroup>
   <ItemGroup>
