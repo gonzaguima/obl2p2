@@ -32,6 +32,7 @@ BAJA
 [ ]- baja usuario con mensaje 
 
 MODIFICACION
+
 [ ]- listar usuarios
 
 [ ]- cargar datos del usuario seleccionado y mostrar inputs para cambiar
