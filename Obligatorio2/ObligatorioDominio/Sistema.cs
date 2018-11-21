@@ -429,6 +429,9 @@ namespace ObligatorioDominio
             this.AltaApartamento(3, 1, false, 1, "1SE", 90, "SE");
             this.AltaApartamento(1, 1, false, 4, "4N", 30, "N");
             this.AltaApartamento(5, 2, true, 10, "10S", 150, "S");
+
+            //CLIENTE
+            this.AltaCliente("Pablo", "Ingold", "48684676", "Guazunambi", 094992993, "pingold", "123456");
             
         }
 

@@ -15,7 +15,11 @@ namespace Obligatorio2.Controllers
             return View();
         }
         public ActionResult Alta() { return View(); }
-        public ActionResult Baja() { return View(); }
+        public ActionResult Baja()
+        {
+
+            return View();
+        }
         public ActionResult Mod() { return View(); }
         [HttpPost]
         public ActionResult Alta(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
@@ -25,11 +29,9 @@ namespace Obligatorio2.Controllers
                 ViewBag.resultado("Alta exitosa");
             }
             else { ViewBag.resultado("Alta fallida"); }
-            return View();
+            return View("Alta");
         }
-        [HttpPost]
-        public ActionResult Baja() { return View(); }
-        [HttpPost]
-        public ActionResult Mod() { return View(); }
+        //[HttpPost]
+        //public ActionResult Mod() { return View(); }
     }
 }
