@@ -8,8 +8,9 @@ namespace ObligatorioDominio
 {
     public class Sistema
     {   /*listados*/
-        List<Cliente> Clientes { get; set; } = new List<Cliente>();
-        List<Edificio> edificios = new List<Edificio>();
+        public List<Cliente> Clientes { get; set; } = new List<Cliente>();
+        public List<Vendedor> Vendedores { get; set; } = new List<Vendedor>();
+        public List<Edificio> edificios = new List<Edificio>();
         List<Usuario> usuarios { get; set; } = new List<Usuario>();
         //instancia
         private static Sistema instancia;

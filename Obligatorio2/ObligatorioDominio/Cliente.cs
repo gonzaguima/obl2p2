@@ -18,6 +18,10 @@ namespace ObligatorioDominio
             this.Direccion = direccion;
             this.Telefono = telefono;
         }
-        public Cliente() { }
+        //public Cliente() { }
+        public override string ToString()
+        {
+            return this.Nombre + " " + this.Apellido;
+        }
     }
 }

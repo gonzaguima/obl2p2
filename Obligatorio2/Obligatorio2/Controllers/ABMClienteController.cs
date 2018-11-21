@@ -27,9 +27,9 @@ namespace Obligatorio2.Controllers
             else { ViewBag.resultado("Alta fallida"); }
             return View();
         }
-        //[HttpPost]
-        //public ActionResult Baja() { return View(); }
-        //[HttpPost]
-        //public ActionResult Mod() { return View(); }
+        [HttpPost]
+        public ActionResult Baja() { return View(); }
+        [HttpPost]
+        public ActionResult Mod() { return View(); }
     }
 }

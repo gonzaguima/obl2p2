@@ -15,7 +15,6 @@ namespace ObligatorioDominio
             this.User = user;
             this.Pass = pass;
         }
-        public Usuario() { }
         public bool ValidarUser()
         {
             bool existe = false;
