@@ -79,7 +79,7 @@ namespace ObligatorioDominio
             bool alta = false;
             if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "")
             {
-                Cliente c = null/*BuscarCliente(documento)*/;
+                Cliente c = BuscarCliente(documento);
                 if (c == null)
                 {
                     c = new Cliente(nombre, apellido, documento, direccion, telefono, user, pass);
@@ -89,20 +89,23 @@ namespace ObligatorioDominio
             }
             return alta;
         }
-        //public Cliente BuscarCliente(string documento)
-        //{
-        //    Cliente c = null;
-        //    int i = Clientes.Count;
-        //    while (i >= 0 && Clientes != null)
-        //    {
-        //        if (Clientes[i].Documento == documento)
-        //        {
-        //            c = Clientes[i];
-        //        }
-        //        i--;
-        //    }
-        //    return c;
-        //}
+        public Cliente BuscarCliente(string documento)
+        {
+            Cliente c = null;
+            int i = Clientes.Count;
+            if (i > 0)
+            {
+                while (i >= 0 && Clientes != null)
+                {
+                    if (Clientes[i].Documento == documento)
+                    {
+                        c = Clientes[i];
+                    }
+                    i--;
+                } 
+            }
+            return c;
+        }
 
         //crea un apartamento de tipo Oficina
         private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)

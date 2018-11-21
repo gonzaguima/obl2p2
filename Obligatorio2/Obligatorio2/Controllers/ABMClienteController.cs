@@ -17,7 +17,6 @@ namespace Obligatorio2.Controllers
         public ActionResult Alta() { return View(); }
         public ActionResult Baja()
         {
-
             return View();
         }
         public ActionResult Mod() { return View(); }
@@ -25,7 +24,7 @@ namespace Obligatorio2.Controllers
         public ActionResult Alta(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
 
-            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && telefono != null && pass != "" && user != "")
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && telefono != 0 && pass != "" && user != "")
             {
                 if (Sistema.Instancia.AltaCliente(nombre, apellido, documento, direccion, telefono, user, pass))
                 {
