@@ -4,9 +4,10 @@
 }
 
 <h2>Index</h2>
+<div>
+    @Html.ActionLink("Alta", "Alta", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
 
-<form action="Alta"><input type="submit" value="Alta" /></form>
+    @Html.ActionLink("Baja", "Baja", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
 
-<form action="Baja"><input type="submit" value="Baja" /></form>
-
-<form action="Mod"><input type="submit" value="Modificar" /></form>
+    @Html.ActionLink("Modificacion", "Mod", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
+</div>

@@ -6,6 +6,10 @@
 <h2>Inicio</h2>
 
 <label>Menu</label>
-<form action="ABMCliente"><input type="submit" value="ABM Cliente"</form>
-<form action="ListCliente"><input type="submit" value="Listado de clientes"</form>
-<form action="Venta"><input type="submit" value="Venta"</form>
+<div>
+    @Html.ActionLink("ABM Cliente", "Index", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
+
+    @Html.ActionLink("Listado Cliente", "Index", "ListadoCliente", new { area = "" }, new { @class = "navbar-brand" })
+
+    @Html.ActionLink("Venta", "Index", "Venta", new { area = "" }, new { @class = "navbar-brand" })
+</div>
