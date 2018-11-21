@@ -24,11 +24,15 @@ namespace Obligatorio2.Controllers
         [HttpPost]
         public ActionResult Alta(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
-            if (Sistema.Instancia.AltaCliente(nombre, apellido, documento, direccion, telefono, user, pass))
+
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && telefono != null && pass != "" && user != "")
             {
-                ViewBag.resultado("Alta exitosa");
+                if (Sistema.Instancia.AltaCliente(nombre, apellido, documento, direccion, telefono, user, pass))
+                {
+                    ViewBag.resultado("Alta exitosa");
+                }
+                else { ViewBag.resultado("Alta fallida"); }
             }
-            else { ViewBag.resultado("Alta fallida"); }
             return View("Alta");
         }
         //[HttpPost]
