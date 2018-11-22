@@ -11,7 +11,6 @@ namespace ObligatorioDominio
         public List<Cliente> Clientes { get; set; } = new List<Cliente>();
         public List<Vendedor> Vendedores { get; set; } = new List<Vendedor>();
         public List<Edificio> edificios = new List<Edificio>();
-        List<Usuario> usuarios { get; set; } = new List<Usuario>();
         //instancia
         private static Sistema instancia;
 
@@ -38,41 +37,58 @@ namespace ObligatorioDominio
         //    return alta;
         //}
 
-        private Usuario BuscarUsuario(string user)
+        public object BuscarUsuario(string user, string pass)
         {
-            Usuario u = null;
+            object u = null;
             int i = 0;
-            while (i < usuarios.Count && u == null)
+            while (i < Clientes.Count && u == null)
             {
-                if (usuarios[i].User == user)
+                if (Clientes[i].User == user)
                 {
-                    u = usuarios[i];
+                    if (Clientes[i].Pass == pass)
+                    {
+                        u = Clientes[i]; 
+                    }
                 }
                 i++;
+            }
+            if (u == null)
+            {
+                while (i < Vendedores.Count && u == null)
+                {
+                    if (Vendedores[i].User == user)
+                    {
+                        if (Vendedores[i].Pass == pass)
+                        {
+                            u = Clientes[i];
+                        }
+                    }
+                    i++;
+                }
             }
             return u;
         }
 
-        public bool AltaUsuario(Usuario u)
-        {
-            bool alta = false;
-            if (!usuarios.Contains(u))
-            {
-                this.usuarios.Add(u);
-                alta = true;
-            }
-            return alta;
-        }
+        //public bool AltaUsuario(Usuario u)
+        //{
+        //    bool alta = false;
+        //    if (!usuarios.Contains(u))
+        //    {
+        //        this.usuarios.Add(u);
+        //        alta = true;
+        //    }
+        //    return alta;
+        //}
 
-        public bool ValidarUser(Usuario u)
-        {
-            bool existe = false;
-            if (usuarios.Contains(u))
-            {
-                existe = true;
-            }
-            return existe;
-        }
+        //public bool ValidarUser(Usuario u)
+        //{
+        //    bool existe = false;
+        //    if (usuarios.Contains(u))
+        //    {
+        //        existe = true;
+        //    }
+        //    return existe;
+        //}
 
         //VENTAS
         public bool AltaVendedor(string user, string pass)

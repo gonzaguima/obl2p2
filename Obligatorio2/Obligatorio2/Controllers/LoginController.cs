@@ -16,9 +16,9 @@ namespace Obligatorio2.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(Usuario c)
+        public ActionResult Index(string user, string pass)
         {
-            if (Sistema.Instancia.ValidarUser(c)) {
+            if (Sistema.Instancia.BuscarUsuario(user, pass) != null) {
                 ViewBag.resultado = "Usuario valido.";
                 Session["User"] = c.User;
             }
