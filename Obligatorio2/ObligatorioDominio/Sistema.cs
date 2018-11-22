@@ -21,6 +21,7 @@ namespace ObligatorioDominio
         }
 
         //Metodos para Usuario.
+
         //public bool AltaUsuario(string user, string pass)
         //{
         //    bool alta = false;
@@ -73,6 +74,41 @@ namespace ObligatorioDominio
             return existe;
         }
 
+        //VENTAS
+        public bool AltaVendedor(string user, string pass)
+        {
+            bool alta = false;
+            if (user != "" && pass != "")
+            {
+                Vendedor v = BuscarVendedor(user);
+                if (v == null)
+                {
+                    v = new Vendedor(user, pass);
+                    Vendedores.Add(v);
+                    alta = true;
+                }
+            }
+            return alta;
+        }
+
+        private Vendedor BuscarVendedor(string user)
+        {
+            Vendedor v = null;
+            int i = Vendedores.Count;
+            if (i > 0)
+            {
+                while (i >= 0 && v == null)
+                {
+                    if (Vendedores[i].User == user)
+                    {
+                        v = Vendedores[i];
+                    }
+                    i--;
+                }
+            }
+            return v;
+        }
+
         //ABM Clientes
         public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
@@ -95,7 +131,7 @@ namespace ObligatorioDominio
             int i = Clientes.Count;
             if (i > 0)
             {
-                while (i >= 0 && Clientes != null)
+                while (i >= 0 && c != null)
                 {
                     if (Clientes[i].Documento == documento)
                     {
