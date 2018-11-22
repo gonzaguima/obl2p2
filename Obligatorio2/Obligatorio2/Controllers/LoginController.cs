@@ -18,9 +18,14 @@ namespace Obligatorio2.Controllers
         [HttpPost]
         public ActionResult Index(string user, string pass)
         {
-            if (Sistema.Instancia.BuscarUsuario(user, pass) != null) {
+            object u = Sistema.Instancia.BuscarUsuario(user, pass);
+            if (u != null) {
                 ViewBag.resultado = "Usuario valido.";
-                Session["User"] = c.User;
+                if (u is Cliente)
+                {
+                    
+                }
+                Session["User"] = u;
             }
             else { ViewBag.resultado = "Usuario invalido."; }
             return View();
