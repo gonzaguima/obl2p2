@@ -21,10 +21,6 @@ namespace Obligatorio2.Controllers
             object u = Sistema.Instancia.BuscarUsuario(user, pass);
             if (u != null) {
                 ViewBag.resultado = "Usuario valido.";
-                if (u is Cliente)
-                {
-                    
-                }
                 Session["User"] = u;
             }
             else { ViewBag.resultado = "Usuario invalido."; }
