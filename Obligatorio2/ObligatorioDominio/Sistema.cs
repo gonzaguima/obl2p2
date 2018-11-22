@@ -490,6 +490,10 @@ namespace ObligatorioDominio
             this.AltaCliente("Juan", "Lopetegui", "34561871", "Silvestre", 092158632, "jlope", "147852");
             this.AltaCliente("Alberto", "Villanueva", "41258643", "CerroLargo", 098124856, "avilla", "520147");
 
+            //VENDEDOR
+            this.AltaVendedor("vend1", "vend1");
+            this.AltaVendedor("vend2", "vend2");
+            this.AltaVendedor("vend3", "vend3");
         }
 
         //***************** singleton ****************
