@@ -4,9 +4,10 @@
 }
 
 <h2>Index</h2>
+<div>
+    @Html.ActionLink("Alta", "Alta", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
 
-<p>Redireccionar a alta</p>
+    @Html.ActionLink("Baja", "Baja", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
 
-<p>Redireccionar a baja</p>
-
-<p>Redireccionar a modificacion</p>
+    @Html.ActionLink("Modificacion", "Mod", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
+</div>

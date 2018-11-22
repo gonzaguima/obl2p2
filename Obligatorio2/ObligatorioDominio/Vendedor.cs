@@ -9,5 +9,6 @@ namespace ObligatorioDominio
     public class Vendedor : Usuario
     {
         //Ver que atributos necesita. Sldos
+        public Vendedor(string user, string pass) : base(user, pass) { }
     }
 }

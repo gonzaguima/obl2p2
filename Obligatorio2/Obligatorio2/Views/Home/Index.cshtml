@@ -6,3 +6,10 @@
 <h2>Inicio</h2>
 
 <label>Menu</label>
+<div>
+    @Html.ActionLink("ABM Cliente", "Index", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
+
+    @Html.ActionLink("Listado Cliente", "Index", "ListadoCliente", new { area = "" }, new { @class = "navbar-brand" })
+
+    @Html.ActionLink("Venta", "Index", "Venta", new { area = "" }, new { @class = "navbar-brand" })
+</div>

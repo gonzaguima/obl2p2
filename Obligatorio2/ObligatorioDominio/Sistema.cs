@@ -8,9 +8,9 @@ namespace ObligatorioDominio
 {
     public class Sistema
     {   /*listados*/
-        List<Cliente> Clientes { get; set; } = new List<Cliente>();
-        List<Edificio> edificios = new List<Edificio>();
-        List<Usuario> usuarios { get; set; } = new List<Usuario>();
+        public List<Cliente> Clientes { get; set; } = new List<Cliente>();
+        public List<Vendedor> Vendedores { get; set; } = new List<Vendedor>();
+        public List<Edificio> edificios = new List<Edificio>();
         //instancia
         private static Sistema instancia;
 
@@ -20,6 +20,7 @@ namespace ObligatorioDominio
         }
 
         //Metodos para Usuario.
+
         //public bool AltaUsuario(string user, string pass)
         //{
         //    bool alta = false;
@@ -36,40 +37,92 @@ namespace ObligatorioDominio
         //    return alta;
         //}
 
-        private Usuario BuscarUsuario(string user)
+        public object BuscarUsuario(string user, string pass)
         {
-            Usuario u = null;
+            object u = null;
             int i = 0;
-            while (i < usuarios.Count && u == null)
+            while (i < Clientes.Count && u == null)
             {
-                if (usuarios[i].User == user)
+                if (Clientes[i].User == user)
                 {
-                    u = usuarios[i];
+                    if (Clientes[i].Pass == pass)
+                    {
+                        u = Clientes[i]; 
+                    }
                 }
                 i++;
+            }
+            if (u == null)
+            {
+                while (i < Vendedores.Count && u == null)
+                {
+                    if (Vendedores[i].User == user)
+                    {
+                        if (Vendedores[i].Pass == pass)
+                        {
+                            u = Clientes[i];
+                        }
+                    }
+                    i++;
+                }
             }
             return u;
         }
 
-        public bool AltaUsuario(Usuario u)
+        //public bool AltaUsuario(Usuario u)
+        //{
+        //    bool alta = false;
+        //    if (!usuarios.Contains(u))
+        //    {
+        //        this.usuarios.Add(u);
+        //        alta = true;
+        //    }
+        //    return alta;
+        //}
+
+        //public bool ValidarUser(Usuario u)
+        //{
+        //    bool existe = false;
+        //    if (usuarios.Contains(u))
+        //    {
+        //        existe = true;
+        //    }
+        //    return existe;
+        //}
+
+        //VENTAS
+        public bool AltaVendedor(string user, string pass)
         {
             bool alta = false;
-            if (!usuarios.Contains(u))
+            if (user != "" && pass != "")
             {
-                this.usuarios.Add(u);
-                alta = true;
+                Vendedor v = BuscarVendedor(user);
+                if (v == null)
+                {
+                    v = new Vendedor(user, pass);
+                    Vendedores.Add(v);
+                    alta = true;
+                }
             }
             return alta;
         }
 
-        public bool ValidarUser(Usuario u)
+        private Vendedor BuscarVendedor(string user)
         {
-            bool existe = false;
-            if (usuarios.Contains(u))
+            Vendedor v = null;
+            int i = Vendedores.Count;
+            if (i > 0)
             {
-                existe = true;
+                while (i >= 0 && v == null)
+                {
+                    if (Vendedores[i].User == user)
+                    {
+                        v = Vendedores[i];
+                    }
+                    i--;
+                }
             }
-            return existe;
+            return v;
         }
 
         //ABM Clientes
@@ -92,13 +145,16 @@ namespace ObligatorioDominio
         {
             Cliente c = null;
             int i = Clientes.Count;
-            while (i >= 0 && Clientes != null)
+            if (i > 0)
             {
-                if (Clientes[i].Documento == documento)
+                while (i >= 0 && c != null)
                 {
-                    c = Clientes[i];
-                }
-                i--;
+                    if (Clientes[i].Documento == documento)
+                    {
+                        c = Clientes[i];
+                    }
+                    i--;
+                } 
             }
             return c;
         }
@@ -428,7 +484,16 @@ namespace ObligatorioDominio
             this.AltaApartamento(3, 1, false, 1, "1SE", 90, "SE");
             this.AltaApartamento(1, 1, false, 4, "4N", 30, "N");
             this.AltaApartamento(5, 2, true, 10, "10S", 150, "S");
-            
+
+            //CLIENTE
+            this.AltaCliente("Pablo", "Ingold", "48684676", "Guazunambi", 094992993, "pingold", "123456");
+            this.AltaCliente("Juan", "Lopetegui", "34561871", "Silvestre", 092158632, "jlope", "147852");
+            this.AltaCliente("Alberto", "Villanueva", "41258643", "CerroLargo", 098124856, "avilla", "520147");
+
+            //VENDEDOR
+            this.AltaVendedor("vend1", "vend1");
+            this.AltaVendedor("vend2", "vend2");
+            this.AltaVendedor("vend3", "vend3");
         }
 
         //***************** singleton ****************
