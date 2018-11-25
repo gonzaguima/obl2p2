@@ -96,11 +96,17 @@ namespace ObligatorioDominio
             bool alta = false;
             if (user != "" && pass != "")
             {
-                Vendedor v = BuscarVendedor(user);
-                if (v == null)
+                if (Vendedores.Count != 0)
                 {
-                    v = new Vendedor(user, pass);
-                    Vendedores.Add(v);
+                    if (BuscarVendedor(user) == null)
+                    {
+                        Vendedores.Add(new Vendedor(user, pass));
+                        alta = true;
+                    }
+                }
+                else
+                {
+                    Vendedores.Add(new Vendedor(user, pass));
                     alta = true;
                 }
             }
@@ -110,17 +116,14 @@ namespace ObligatorioDominio
         private Vendedor BuscarVendedor(string user)
         {
             Vendedor v = null;
-            int i = Vendedores.Count;
-            if (i > 0)
+            int i = 0;
+            while (i < Vendedores.Count && v == null)
             {
-                while (i >= 0 && v == null)
+                if (Vendedores[i].User == user)
                 {
-                    if (Vendedores[i].User == user)
-                    {
-                        v = Vendedores[i];
-                    }
-                    i--;
+                    v = Vendedores[i];
                 }
+                i++;
             }
             return v;
         }
@@ -144,19 +147,28 @@ namespace ObligatorioDominio
         public Cliente BuscarCliente(string documento)
         {
             Cliente c = null;
-            int i = Clientes.Count;
-            if (i > 0)
-            {
-                while (i >= 0 && c != null)
+            int i = 0;
+                while (i < Clientes.Count && c == null)
                 {
                     if (Clientes[i].Documento == documento)
                     {
                         c = Clientes[i];
                     }
-                    i--;
+                    i++;
                 } 
-            }
             return c;
+        }
+
+        public bool BajaCliente(string documento)
+        {
+            bool baja = false;
+            Cliente c = BuscarCliente(documento);
+            if (c != null)
+            {
+                Clientes.Remove(c);
+                baja = true;
+            }
+            return baja;
         }
 
         //crea un apartamento de tipo Oficina
@@ -491,9 +503,8 @@ namespace ObligatorioDominio
             this.AltaCliente("Alberto", "Villanueva", "41258643", "CerroLargo", 098124856, "avilla", "520147");
 
             //VENDEDOR
-            this.AltaVendedor("vend1", "vend1");
-            this.AltaVendedor("vend2", "vend2");
-            this.AltaVendedor("vend3", "vend3");
+            this.AltaVendedor("vend1", "vend1111");
+            this.AltaVendedor("vend2", "vend2222");
         }
 
         //***************** singleton ****************

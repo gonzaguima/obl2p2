@@ -34,6 +34,15 @@ namespace Obligatorio2.Controllers
             }
             return View("Alta");
         }
+        [HttpPost]
+        public ActionResult Baja(string borrador)
+        {
+            if (Sistema.Instancia.BajaCliente(borrador))
+            {
+                ViewBag.resultado("Baja realizada con exito!");
+            }
+            return View("Baja");
+        }
         //[HttpPost]
         //public ActionResult Mod() { return View(); }
     }

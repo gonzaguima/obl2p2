@@ -5,9 +5,15 @@
 
 <h2>Baja</h2>
 
-<select>
-    @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
-    {
-        <option value="@item.Documento">@item.ToString()</option>
-    }
-</select>
+<form action="~/ABMCliente/Baja" method="post">
+    <select name="borrador">
+        @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
+        {
+            <option value="@item.Documento">@item.ToString()</option>
+        }
+    </select>
+    <br />
+    <input type="submit" value="Borrar" />
+</form>
+
+<p>@ViewBag.resultado</p>
