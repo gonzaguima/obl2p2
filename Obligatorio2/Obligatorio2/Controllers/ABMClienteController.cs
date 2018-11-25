@@ -28,9 +28,9 @@ namespace Obligatorio2.Controllers
             {
                 if (Sistema.Instancia.AltaCliente(nombre, apellido, documento, direccion, telefono, user, pass))
                 {
-                    ViewBag.resultado("Alta exitosa");
+                    ViewBag.resultado = "Alta exitosa";
                 }
-                else { ViewBag.resultado("Alta fallida"); }
+                else { ViewBag.resultado = "Alta fallida"; }
             }
             return View("Alta");
         }
@@ -39,7 +39,7 @@ namespace Obligatorio2.Controllers
         {
             if (Sistema.Instancia.BajaCliente(borrador))
             {
-                ViewBag.resultado("Baja realizada con exito!");
+                ViewBag.resultado = "Baja realizada con exito!";
             }
             return View("Baja");
         }
