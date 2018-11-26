@@ -8,13 +8,12 @@ namespace ObligatorioDominio
 {
      public class Compra
     {
-        private DateTime fecha;
+        public DateTime fecha { get; }
         private string vendedor;
         private int precio;
         private Apartamento apartamento;
         private Cliente cliente;
-
-
+        
         public Compra(DateTime fecha, string vendedor, int precio, Apartamento apartamento, Cliente cliente)
         {
             this.fecha = fecha;

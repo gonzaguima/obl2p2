@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ObligatorioDominio;
 
 namespace Obligatorio2.Controllers
 {
@@ -10,7 +11,18 @@ namespace Obligatorio2.Controllers
     {
         // GET: ListadoClientes
         public ActionResult Index()
+        { 
+            List<Cliente> c = Sistema.Instancia.Clientes;
+            //c.Sort();
+            ViewBag.listado = c; 
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(DateTime inicio, DateTime final)
         {
+            List<Cliente> c = Sistema.Instancia.FiltrarClientes(inicio, final);
+            //c.Sort();
+            ViewBag.listado = c;
             return View();
         }
     }

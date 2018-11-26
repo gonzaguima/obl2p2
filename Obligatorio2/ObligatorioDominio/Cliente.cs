@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ObligatorioDominio
 {
@@ -22,6 +24,23 @@ namespace ObligatorioDominio
         public override string ToString()
         {
             return this.Nombre + " " + this.Apellido;
+        }
+
+        internal bool Filtrado(DateTime fechai, DateTime fechaf)
+        {
+            bool val = false;
+            foreach (var i in this.Compras)
+            {
+                if (i.fecha >= fechai && i.fecha <= fechaf)
+                {
+                    val = true;
+                }
+            }
+            return val;
+        }
+        public int CompareTo(Cliente c)
+        {
+            return this.Nombre.CompareTo(c.Nombre);
         }
     }
 }

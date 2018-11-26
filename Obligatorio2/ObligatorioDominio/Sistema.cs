@@ -19,6 +19,7 @@ namespace ObligatorioDominio
             get { return edificios; }
         }
 
+
         //Metodos para Usuario.
 
         //public bool AltaUsuario(string user, string pass)
@@ -169,6 +170,21 @@ namespace ObligatorioDominio
                 baja = true;
             }
             return baja;
+        }
+        
+        public List<Cliente> FiltrarClientes(DateTime fechai, DateTime fechaf)
+        {
+            List<Cliente> filtrada = new List<Cliente>();
+            //Filtrar por fecha
+            foreach (var i in Clientes)
+            {
+                if (i.Filtrado(fechai, fechaf))
+                {
+                    filtrada.Add(i);
+                }
+            }
+            
+            return filtrada;
         }
 
         //crea un apartamento de tipo Oficina
