@@ -162,6 +162,7 @@
     <Content Include="Views\ABMCliente\Alta.cshtml" />
     <Content Include="Views\ABMCliente\Baja.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ABMCliente\Mod.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

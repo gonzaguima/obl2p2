@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Mod";
+}
+
+<h2>Modificar</h2>
+
+<form method="post" action="~/ABMCliente/Mod">
+    <select name="borrador">
+        <option value="0" selected="selected">Seleccionar</option>
+        @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
+        {
+            <option value="@item.Documento">@item.ToString()</option>
+        }
+    </select>
+    <br />
+    <button type="submit">Cargar datos</button>
+    <br /><hr />
+    <table>
+        <tr>
+            <td><label for="nombre">Nombre: </label></td>
+            <td><input type="text" name="nombre" value="@ViewBag.nombre" /></td>
+        </tr>
+        <tr>
+            <td><label for="apellido">Apellido: </label></td>
+            <td><input type="text" name="apellido" value="@ViewBag.apellido" /></td>
+        </tr>
+        <tr>
+            <td><label for="documento">Documento: </label></td>
+            <td><input type="text" name="documento" value="@ViewBag.documento" /></td>
+        </tr>
+        <tr>
+            <td><label for="direccion">Direccion: </label></td>
+            <td><input type="text" name="direccion" value="@ViewBag.direccion" /></td>
+        </tr>
+        <tr>
+            <td><label for="telefono">Telefono: </label></td>
+            <td><input type="number" name="telefono" value="@ViewBag.telefono" /></td>
+        </tr>
+        <tr>
+            <td><label for="user">Usuario: </label></td>
+            <td><input type="text" name="user" value="@ViewBag.user" /></td>
+        </tr>
+        <tr>
+            <td><label for="pass">Contraseña: </label></td>
+            <td><input type="password" name="pass" value="@ViewBag.pass" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Modificar"/></td>
+        </tr>
+    </table>
+    <label>@ViewBag.resultado</label>
+</form>
