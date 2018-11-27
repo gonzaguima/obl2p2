@@ -35,21 +35,7 @@ namespace ObligatorioDominio
         public object BuscarUsuario(string user, string pass)
         {
             object u = null;
-            int i = 0;
             int x = 0;
-            while (i < Clientes.Count && u == null) //Primero busco el usuario en cliente
-            {
-                if (Clientes[i].User == user)
-                {
-                    if (Clientes[i].Pass == pass)
-                    {
-                        u = Clientes[i]; 
-                    }
-                }
-                i++;
-            }
-            if (u == null)
-            {
                 while (x < Vendedores.Count && u == null) //Si no lo encuentro en cliente, lo busco en vendedor
                 {
                     if (Vendedores[x].User == user)
@@ -59,9 +45,8 @@ namespace ObligatorioDominio
                             u = Clientes[x];
                         }
                     }
-                    i++;
+                    x++;
                 }
-            }
             return u;
         }
 
