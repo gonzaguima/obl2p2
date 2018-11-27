@@ -15,8 +15,7 @@ namespace Obligatorio2.Controllers
             if (Session["User"] is Vendedor)
             {
                 Vendedor v = Sistema.Instancia.BuscarUsuarioV(Session["User"]);
-                //v.Sort();
-                ViewBag.listado = v;
+                ViewBag.listado = v.Ventas;
             }
             else { ViewBag.listado = "El usuario debe ser vendedor"; }
             return View();
