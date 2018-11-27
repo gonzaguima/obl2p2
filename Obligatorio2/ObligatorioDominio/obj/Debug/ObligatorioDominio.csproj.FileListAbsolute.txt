@@ -3,3 +3,8 @@ C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\ObligatorioDominio\bin\Debug
 C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\ObligatorioDominio\obj\Debug\ObligatorioDominio.csprojResolveAssemblyReference.cache
 C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\ObligatorioDominio\obj\Debug\ObligatorioDominio.dll
 C:\Users\pingo\Documents\GitHub\obl2p2\Obligatorio2\ObligatorioDominio\obj\Debug\ObligatorioDominio.pdb
+C:\Users\gonza\Desktop\obl2p2\Obligatorio2\ObligatorioDominio\bin\Debug\ObligatorioDominio.dll
+C:\Users\gonza\Desktop\obl2p2\Obligatorio2\ObligatorioDominio\bin\Debug\ObligatorioDominio.pdb
+C:\Users\gonza\Desktop\obl2p2\Obligatorio2\ObligatorioDominio\obj\Debug\ObligatorioDominio.csprojResolveAssemblyReference.cache
+C:\Users\gonza\Desktop\obl2p2\Obligatorio2\ObligatorioDominio\obj\Debug\ObligatorioDominio.dll
+C:\Users\gonza\Desktop\obl2p2\Obligatorio2\ObligatorioDominio\obj\Debug\ObligatorioDominio.pdb

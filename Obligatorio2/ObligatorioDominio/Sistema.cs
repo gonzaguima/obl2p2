@@ -36,6 +36,7 @@ namespace ObligatorioDominio
         {
             object u = null;
             int i = 0;
+            int x = 0;
             while (i < Clientes.Count && u == null) //Primero busco el usuario en cliente
             {
                 if (Clientes[i].User == user)
@@ -49,13 +50,13 @@ namespace ObligatorioDominio
             }
             if (u == null)
             {
-                while (i < Vendedores.Count && u == null) //Si no lo encuentro en cliente, lo busco en vendedor
+                while (x < Vendedores.Count && u == null) //Si no lo encuentro en cliente, lo busco en vendedor
                 {
-                    if (Vendedores[i].User == user)
+                    if (Vendedores[x].User == user)
                     {
-                        if (Vendedores[i].Pass == pass)
+                        if (Vendedores[x].Pass == pass)
                         {
-                            u = Clientes[i];
+                            u = Clientes[x];
                         }
                     }
                     i++;
@@ -73,7 +74,7 @@ namespace ObligatorioDominio
                 int i = 0;
                 while (i < Vendedores.Count && v == null)
                 {
-                    if (Vendedores[i].User == )
+                    if (Vendedores[i].User == "vend1" || Vendedores[i].User == "vend2")
                     {
                         v = Vendedores[i];
                     }
@@ -217,9 +218,9 @@ namespace ObligatorioDominio
         }
 
 
-
+        #region obl1
         //***************metodo alta Edificio con CasaHabitacion**********************
-         public string AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
+        public string AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
         {
             string mensaje;
             List<Apartamento> apartamentos = new List<Apartamento>();
@@ -502,7 +503,7 @@ namespace ObligatorioDominio
             }
             return aptos;
         }
-
+        #endregion
         //************* DATOS DE PRUEBA ******************
         public void CargarDatos()
         {
