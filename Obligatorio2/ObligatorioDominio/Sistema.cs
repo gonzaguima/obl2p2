@@ -10,7 +10,7 @@ namespace ObligatorioDominio
     {   /*listados*/
         public List<Cliente> Clientes { get; set; } = new List<Cliente>();
         public List<Vendedor> Vendedores { get; set; } = new List<Vendedor>();
-        public List<Edificio> Edificios { get; } = new List<Edificio>();
+        public List<Edificio> Edificios { get; set; } = new List<Edificio>();
         //instancia
         private static Sistema instancia;
 
@@ -64,26 +64,24 @@ namespace ObligatorioDominio
             return u;
         }
 
-        //public bool AltaUsuario(Usuario u)
-        //{
-        //    bool alta = false;
-        //    if (!usuarios.Contains(u))
-        //    {
-        //        this.usuarios.Add(u);
-        //        alta = true;
-        //    }
-        //    return alta;
-        //}
+        public Vendedor BuscarUsuarioV(object user)
+        {
+            Vendedor v = null;
 
-        //public bool ValidarUser(Usuario u)
-        //{
-        //    bool existe = false;
-        //    if (usuarios.Contains(u))
-        //    {
-        //        existe = true;
-        //    }
-        //    return existe;
-        //}
+            if (user is Vendedor)
+            {
+                int i = 0;
+                while (i < Vendedores.Count && v == null)
+                {
+                    if (Vendedores[i].User == )
+                    {
+                        v = Vendedores[i];
+                    }
+                    i++;
+                }
+            }
+            return v;
+        }
 
         //VENTAS
         public bool AltaVendedor(string user, string pass)
@@ -172,17 +170,20 @@ namespace ObligatorioDominio
         public bool ModCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
             bool mod = false;
-            Cliente c = BuscarCliente(documento);
-            if (c != null)
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "")
             {
-                c.Nombre = nombre;
-                c.Apellido = apellido;
-                c.Documento = documento;
-                c.Direccion = direccion;
-                c.Telefono = telefono;
-                c.User = user;
-                c.Pass = pass;
-                mod = true;
+                Cliente c = BuscarCliente(documento);
+                if (c != null)
+                {
+                    c.Nombre = nombre;
+                    c.Apellido = apellido;
+                    //c.Documento = documento; El documento no se cambia.
+                    c.Direccion = direccion;
+                    c.Telefono = telefono;
+                    c.User = user;
+                    c.Pass = pass;
+                    mod = true;
+                } 
             }
             return mod;
         }
@@ -206,7 +207,6 @@ namespace ObligatorioDominio
         private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)
         {
             Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso,  numero,  metraje,  orientacion);
-            
             return oficina;
         }
         //crea un apartamento de tipo CasaHabitacion

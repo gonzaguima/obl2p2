@@ -137,6 +137,7 @@
     <Compile Include="Controllers\ABMClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListadoClientesController.cs" />
+    <Compile Include="Controllers\ListadoVentaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -164,6 +165,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ABMCliente\Mod.cshtml" />
     <Content Include="Views\Venta\Index.cshtml" />
+    <Content Include="Views\ListadoVenta\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
