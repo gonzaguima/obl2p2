@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<select name="edificio">
+    @foreach (var item in ObligatorioDominio.Sistema.Instancia.Edificios)
+    {
+        <option value="@item.Nombre">@item.ToString()</option>
+    }
+</select>
+<br />
+
+<select name="cliente">
+    @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
+    {
+        <option value="@item.Documento">@item.ToString()</option>
+    }
+</select>
+<br />

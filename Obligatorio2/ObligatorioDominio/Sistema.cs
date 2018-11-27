@@ -10,15 +10,9 @@ namespace ObligatorioDominio
     {   /*listados*/
         public List<Cliente> Clientes { get; set; } = new List<Cliente>();
         public List<Vendedor> Vendedores { get; set; } = new List<Vendedor>();
-        public List<Edificio> edificios = new List<Edificio>();
+        public List<Edificio> Edificios { get; } = new List<Edificio>();
         //instancia
         private static Sistema instancia;
-
-        public List<Edificio> Edificios
-        {
-            get { return edificios; }
-        }
-
 
         //Metodos para Usuario.
 
@@ -174,6 +168,24 @@ namespace ObligatorioDominio
             }
             return baja;
         }
+
+        public bool ModCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        {
+            bool mod = false;
+            Cliente c = BuscarCliente(documento);
+            if (c != null)
+            {
+                c.Nombre = nombre;
+                c.Apellido = apellido;
+                c.Documento = documento;
+                c.Direccion = direccion;
+                c.Telefono = telefono;
+                c.User = user;
+                c.Pass = pass;
+                mod = true;
+            }
+            return mod;
+        }
         
         public List<Cliente> FiltrarClientes(DateTime fechai, DateTime fechaf)
         {
@@ -227,7 +239,7 @@ namespace ObligatorioDominio
 
                     if (BuscarEdificio(nombreEdificio) == null)
                     {
-                        edificios.Add(edificio);
+                        Edificios.Add(edificio);
                         mensaje = "El edificio y apartamento fueron agregados";
                     }
                     else
@@ -329,7 +341,7 @@ namespace ObligatorioDominio
 
                     if (BuscarEdificio(nombreEdificio) == null)
                     {
-                        edificios.Add(edificio);
+                        Edificios.Add(edificio);
                         mensaje = "El edificio fue agregado con la oficina";
                     } else
                     {
@@ -358,12 +370,12 @@ namespace ObligatorioDominio
             bool existe = false;
             Edificio c = null;
             int i = 0;
-            while (i < edificios.Count && !existe)
+            while (i < Edificios.Count && !existe)
             {
-                if (edificios[i].Nombre.ToUpper() == nombre.ToUpper())
+                if (Edificios[i].Nombre.ToUpper() == nombre.ToUpper())
                 {
                     existe = true;
-                    c = edificios[i];
+                    c = Edificios[i];
                 }
                 i++;
             }
@@ -376,13 +388,13 @@ namespace ObligatorioDominio
             bool existe = false;
             int i = 0;
 
-            while (existe == false && i < edificios.Count)
+            while (existe == false && i < Edificios.Count)
             {
                 int j = 0;
 
-                while (existe == false && j < edificios[i].Apartamentos.Count)
+                while (existe == false && j < Edificios[i].Apartamentos.Count)
                 {
-                    if (edificios[i].Apartamentos[j].Numero == numero)
+                    if (Edificios[i].Apartamentos[j].Numero == numero)
                     {
                         existe = true;
                     }
@@ -400,7 +412,7 @@ namespace ObligatorioDominio
         public List<Apartamento> ListadoAptoPrecio(int menor, int mayor)
         {
             List<Apartamento> rango = new List<Apartamento>();
-            foreach (Edificio e in edificios)
+            foreach (Edificio e in Edificios)
             {
                 foreach (Apartamento a in e.Apartamentos)
                 {
@@ -419,13 +431,13 @@ namespace ObligatorioDominio
             bool existe = false;
             int i = 0;
 
-            while (existe == false && i < edificios.Count)
+            while (existe == false && i < Edificios.Count)
             {
                 int j = 0;
 
-                while (existe == false && j < edificios[i].Apartamentos.Count)
+                while (existe == false && j < Edificios[i].Apartamentos.Count)
                 {
-                    if (edificios[i].Apartamentos[j].Metraje >= menor && edificios[i].Apartamentos[j].Metraje <= mayor)
+                    if (Edificios[i].Apartamentos[j].Metraje >= menor && Edificios[i].Apartamentos[j].Metraje <= mayor)
                     {
                         existe = true;
                     }
@@ -438,12 +450,12 @@ namespace ObligatorioDominio
         }
 
 
-        //************************ listado edificios por rango de metrajes *********************************
+        //************************ listado Edificios por rango de metrajes *********************************
         public List<Edificio> ListadoEdificios(int menorMetraje, int mayorMetraje, string orientacion)
         {
             List<Edificio> listadoEdificios = new List<Edificio>();
 
-            foreach (Edificio e in edificios)
+            foreach (Edificio e in Edificios)
             {
                 if (menorMetraje != 0 && mayorMetraje != 0)
                     foreach (Apartamento a in e.Apartamentos)
@@ -481,7 +493,7 @@ namespace ObligatorioDominio
         public List<Apartamento> CargaAptos()
         {
             List<Apartamento> aptos = new List<Apartamento>();
-            foreach (Edificio e in edificios)
+            foreach (Edificio e in Edificios)
             {
                 foreach (Apartamento a in e.Apartamentos)
                 {
@@ -494,12 +506,12 @@ namespace ObligatorioDominio
         //************* DATOS DE PRUEBA ******************
         public void CargarDatos()
         {
-            //EDIFICIOS CON OFICINAS
+            //Edificios CON OFICINAS
             //AltaApartamento(int piso, string numero, int metraje, string orientacion, string edificio, bool esOficina, int dormitorio, int banios, bool garaje, bool equipamiento, int puestosTrabajo)
             this.AltaEdificio("Nostrum", "AvUruguay", 2, "2SO", 70, "SO", 2,true);
             this.AltaEdificio("Altos", "CiudadVieja", 1, "1N", 20, "N", 3, true);
             this.AltaEdificio("BPS", "ArenalGrande", 3, "3SO", 200, "SO", 5, true);
-            //EDIFICIOS CON CASAS
+            //Edificios CON CASAS
             //AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje);
             this.AltaEdificio("HBC", "AvRivera", 4, "4SO", 125, "SO", 2, 2, true);
             this.AltaEdificio("TrumpTower", "PdeE", 4, "2S", 162, "S", 4, 1, true);

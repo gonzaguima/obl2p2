@@ -1,16 +1,17 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Menu principal";
 }
 
-<h2>Inicio</h2>
+<h2>Menu</h2>
 
-<label>Menu</label>
 <div>
+    @Html.ActionLink("Ingresar", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+
     @Html.ActionLink("ABM Cliente", "Index", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
-    <br />
+
     @Html.ActionLink("Listado Cliente", "Index", "ListadoClientes", new { area = "" }, new { @class = "navbar-brand" })
-    <br />
+
     @Html.ActionLink("Venta", "Index", "Venta", new { area = "" }, new { @class = "navbar-brand" })
-    <br />
+    <br /><hr />
 </div>

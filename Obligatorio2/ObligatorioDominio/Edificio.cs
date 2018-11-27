@@ -31,5 +31,9 @@ namespace ObligatorioDominio
             set { apartamentos = value; }
         }
 
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
     }
 }

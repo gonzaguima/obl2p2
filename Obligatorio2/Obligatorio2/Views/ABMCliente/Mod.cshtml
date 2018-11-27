@@ -5,17 +5,18 @@
 
 <h2>Modificar</h2>
 
+<select name="borrador">
+    <option value="0" selected="selected">Seleccionar</option>
+    @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
+    {
+        <option value="@item.Documento">@item.ToString()</option>
+    }
+</select>
+<br />
+<button type="button" onclick="">Cargar datos</button> @*Ver como cargar los datos desde aca*@
+<br /><hr />
+
 <form method="post" action="~/ABMCliente/Mod">
-    <select name="borrador">
-        <option value="0" selected="selected">Seleccionar</option>
-        @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
-        {
-            <option value="@item.Documento">@item.ToString()</option>
-        }
-    </select>
-    <br />
-    <button type="submit">Cargar datos</button>
-    <br /><hr />
     <table>
         <tr>
             <td><label for="nombre">Nombre: </label></td>
