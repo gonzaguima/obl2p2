@@ -11,9 +11,8 @@ namespace Obligatorio2.Controllers
     {
         // GET: ListadoClientes
         public ActionResult Index()
-        { 
-            List<Cliente> c = Sistema.Instancia.Clientes;
-            //c.Sort();
+        {
+            List<Cliente> c = Sistema.Instancia.ClientesOrdenado();
             ViewBag.listado = c; 
             return View();
         }
@@ -21,7 +20,6 @@ namespace Obligatorio2.Controllers
         public ActionResult Index(DateTime inicio, DateTime final)
         {
             List<Cliente> c = Sistema.Instancia.FiltrarClientes(inicio, final);
-            //c.Sort();
             ViewBag.listado = c;
             return View();
         }

@@ -16,22 +16,6 @@ namespace ObligatorioDominio
 
         //Metodos para Usuario.
 
-        //public bool AltaUsuario(string user, string pass)
-        //{
-        //    bool alta = false;
-        //    if (user != "" && pass != "")
-        //    {
-        //        Usuario u = BuscarUsuario(user);
-        //        if (u == null)
-        //        {
-        //            u = new Usuario(user, pass);
-        //            usuarios.Add(u);
-        //            alta = true;
-        //        }
-        //    }
-        //    return alta;
-        //}
-
         public object BuscarUsuario(string user, string pass)
         {
             object u = null;
@@ -153,10 +137,10 @@ namespace ObligatorioDominio
             return baja;
         }
 
-        public bool ModCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        public bool ModCliente(string nombre, string apellido, string documento, string direccion, int telefono)
         {
             bool mod = false;
-            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "")
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "")
             {
                 Cliente c = BuscarCliente(documento);
                 if (c != null)
@@ -166,8 +150,6 @@ namespace ObligatorioDominio
                     //c.Documento = documento; El documento no se cambia.
                     c.Direccion = direccion;
                     c.Telefono = telefono;
-                    c.User = user;
-                    c.Pass = pass;
                     mod = true;
                 } 
             }
@@ -185,11 +167,18 @@ namespace ObligatorioDominio
                     filtrada.Add(i);
                 }
             }
-            
+            filtrada.Sort();
             return filtrada;
         }
 
-       
+        //Metodo para devolver Clientes ordenados
+        public List<Cliente> ClientesOrdenado()
+        {
+            List<Cliente> c = Clientes;
+            c.Sort();
+            return c;
+        }
+
         #region obl1
         //crea un apartamento de tipo Oficina
         private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)

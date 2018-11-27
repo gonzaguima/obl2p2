@@ -50,14 +50,12 @@ namespace Obligatorio2.Controllers
             @ViewBag.documento = c.Documento;
             @ViewBag.direccion = c.Direccion;
             @ViewBag.telefono = c.Telefono;
-            @ViewBag.user = c.User;
-            @ViewBag.pass = c.Pass;
             return View("Mod");
         }
         [HttpPost]
-        public ActionResult Mod(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        public ActionResult Mod(string nombre, string apellido, string documento, string direccion, int telefono)
         {
-            if (Sistema.Instancia.ModCliente(nombre, apellido, documento, direccion, telefono, user, pass))
+            if (Sistema.Instancia.ModCliente(nombre, apellido, documento, direccion, telefono))
             {
                 ViewBag.resultado = "Modificacion exitosa";
             }
