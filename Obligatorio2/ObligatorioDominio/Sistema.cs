@@ -189,6 +189,8 @@ namespace ObligatorioDominio
             return filtrada;
         }
 
+       
+        #region obl1
         //crea un apartamento de tipo Oficina
         private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)
         {
@@ -202,8 +204,6 @@ namespace ObligatorioDominio
             return casa;
         }
 
-
-        #region obl1
         //***************metodo alta Edificio con CasaHabitacion**********************
         public string AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
         {
@@ -368,6 +368,8 @@ namespace ObligatorioDominio
             return c;
         }
 
+       
+
         //****************** metodo buscar apto *****************
         public bool buscarApto(string numero)
         {
@@ -502,6 +504,7 @@ namespace ObligatorioDominio
 
 
         #endregion
+        #region datos
         //************* DATOS DE PRUEBA ******************
         public void CargarDatos()
         {
@@ -515,18 +518,7 @@ namespace ObligatorioDominio
             this.AltaEdificio("HBC", "AvRivera", 4, "4SO", 125, "SO", 2, 2, true);
             this.AltaEdificio("TrumpTower", "PdeE", 4, "2S", 162, "S", 4, 1, true);
             this.AltaEdificio("TorreProfesionales", "Yaguaron", 5, "5E", 120, "E", 4, 4, true);
-
-            //OFICINAS
-            //this.AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion);
-            this.AltaApartamento(6, true, 3, "3E", 90, "E");
-            this.AltaApartamento(3, true, 4, "4O", 55, "O");
-            this.AltaApartamento(1, false, 1, "1S", 30, "S");
-            //APARTAMENTOS
-            //AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion);
-            this.AltaApartamento(3, 1, false, 1, "1SE", 90, "SE");
-            this.AltaApartamento(1, 1, false, 4, "4N", 30, "N");
-            this.AltaApartamento(5, 2, true, 10, "10S", 150, "S");
-
+           
             //CLIENTE
             this.AltaCliente("Pablo", "Ingold", "48684676", "Guazunambi", 094992993, "pingold", "123456");
             this.AltaCliente("Juan", "Lopetegui", "34561871", "Silvestre", 092158632, "jlope", "147852");
@@ -535,8 +527,32 @@ namespace ObligatorioDominio
             //VENDEDOR
             this.AltaVendedor("vend1", "vend1111");
             this.AltaVendedor("vend2", "vend2222");
+
+            agregarApto("Nostrum");
+            agregarApto("Altos");
+            agregarApto("BPS");
+            agregarApto("HBC");
+            agregarApto("TrumpTower");
+            agregarApto("TorreProfesionales");
+        }
+        
+        public void agregarApto(string nombre)
+        {
+            Edificio e = BuscarEdificio(nombre);
+            //OFICINAS
+            //this.AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion);
+            e.Apartamentos.Add(AltaApartamento(6, true, 3, "3E", 90, "E"));
+            e.Apartamentos.Add(AltaApartamento(3, true, 4, "4O", 55, "O"));
+            e.Apartamentos.Add(AltaApartamento(1, false, 1, "1S", 30, "S"));
+            //APARTAMENTOS
+            //AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion);
+            e.Apartamentos.Add(AltaApartamento(3, 1, false, 1, "1SE", 90, "SE"));
+            e.Apartamentos.Add(AltaApartamento(1, 1, false, 4, "4N", 30, "N"));
+            e.Apartamentos.Add(AltaApartamento(5, 2, true, 10, "10S", 150, "S"));
         }
 
+
+        #endregion
         //***************** singleton ****************
         public static Sistema Instancia 
         {
