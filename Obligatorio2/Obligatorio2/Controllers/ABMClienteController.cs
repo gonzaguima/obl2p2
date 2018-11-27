@@ -41,19 +41,19 @@ namespace Obligatorio2.Controllers
             } else { ViewBag.resultado = "Imposible borrar este cliente"; }
             return View("Baja");
         }
-        //[HttpPost]
-        //public ActionResult Mod(string borrador)
-        //{
-        //    Cliente c = Sistema.Instancia.BuscarCliente(borrador);
-        //    @ViewBag.nombre = c.Nombre;
-        //    @ViewBag.apellido = c.Apellido;
-        //    @ViewBag.documento = c.Documento;
-        //    @ViewBag.direccion = c.Direccion;
-        //    @ViewBag.telefono = c.Telefono;
-        //    @ViewBag.user = c.User;
-        //    @ViewBag.pass = c.Pass;
-        //    return View();
-        //}
+
+        public ActionResult CargarDatos(string cliente)
+        {
+            Cliente c = Sistema.Instancia.BuscarCliente(cliente);
+            @ViewBag.nombre = c.Nombre;
+            @ViewBag.apellido = c.Apellido;
+            @ViewBag.documento = c.Documento;
+            @ViewBag.direccion = c.Direccion;
+            @ViewBag.telefono = c.Telefono;
+            @ViewBag.user = c.User;
+            @ViewBag.pass = c.Pass;
+            return View("Mod");
+        }
         [HttpPost]
         public ActionResult Mod(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
