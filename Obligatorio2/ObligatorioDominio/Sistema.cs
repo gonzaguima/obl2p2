@@ -42,7 +42,7 @@ namespace ObligatorioDominio
         {
             object u = null;
             int i = 0;
-            while (i < Clientes.Count && u == null)
+            while (i < Clientes.Count && u == null) //Primero busco el usuario en cliente
             {
                 if (Clientes[i].User == user)
                 {
@@ -55,7 +55,7 @@ namespace ObligatorioDominio
             }
             if (u == null)
             {
-                while (i < Vendedores.Count && u == null)
+                while (i < Vendedores.Count && u == null) //Si no lo encuentro en cliente, lo busco en vendedor
                 {
                     if (Vendedores[i].User == user)
                     {
@@ -95,11 +95,11 @@ namespace ObligatorioDominio
         public bool AltaVendedor(string user, string pass)
         {
             bool alta = false;
-            if (user != "" && pass != "")
+            if (user != "" && pass != "") //Verifico que no sean vacios
             {
                 if (Vendedores.Count != 0)
                 {
-                    if (BuscarVendedor(user) == null)
+                    if (BuscarVendedor(user) == null) //Busco si ya existe el Cliente, comparando por user
                     {
                         Vendedores.Add(new Vendedor(user, pass));
                         alta = true;
@@ -114,7 +114,7 @@ namespace ObligatorioDominio
             return alta;
         }
 
-        private Vendedor BuscarVendedor(string user)
+        private Vendedor BuscarVendedor(string user) 
         {
             Vendedor v = null;
             int i = 0;
@@ -133,11 +133,11 @@ namespace ObligatorioDominio
         public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {
             bool alta = false;
-            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "")
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "") //Verifico que ninguno sea vacio
             {
-                Cliente c = BuscarCliente(documento);
-                if (c == null)
-                {
+                Cliente c = BuscarCliente(documento); //Busco si ya existe el Cliente, comparando por documento
+                if (c == null) //Verifico que no exista
+                { //Si no existe, creo el nuevo Cliente
                     c = new Cliente(nombre, apellido, documento, direccion, telefono, user, pass);
                     Clientes.Add(c);
                     alta = true;
@@ -149,7 +149,7 @@ namespace ObligatorioDominio
         {
             Cliente c = null;
             int i = 0;
-                while (i < Clientes.Count && c == null)
+                while (i < Clientes.Count && c == null) 
                 {
                     if (Clientes[i].Documento == documento)
                     {
@@ -166,7 +166,7 @@ namespace ObligatorioDominio
             Cliente c = BuscarCliente(documento);
             if (c != null)
             {
-                if (c.Compras.Count == 0)
+                if (c.Compras.Count == 0) //Si tiene compras no lo elimina
                 {
                     Clientes.Remove(c);
                     baja = true;
