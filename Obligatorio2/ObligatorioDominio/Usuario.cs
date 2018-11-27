@@ -20,5 +20,9 @@ namespace ObligatorioDominio
             bool existe = false;
             return existe;
         }
+        public override string ToString()
+        {
+            return this.User;
+        }
     }
 }

@@ -3,20 +3,50 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Venta de apartamento</h2>
 
-<select name="edificio">
-    @foreach (var item in ObligatorioDominio.Sistema.Instancia.Edificios)
-    {
-        <option value="@item.Nombre">@item.ToString()</option>
-    }
-</select>
-<br />
+<form method="post" action="~/Venta/Index">
 
-<select name="cliente">
-    @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
-    {
-        <option value="@item.Documento">@item.ToString()</option>
-    }
-</select>
-<br />
+    <label for="cliente">Seleccione un cliente</label>
+    <select name="cliente">
+        <option value="Seleccione un cliente" selected>Seleccione un cliente</option>
+        @foreach (var cli in ObligatorioDominio.Sistema.Instancia.Clientes)
+        {
+            <option value="@cli.ToString()" selected>@cli.ToString()</option>
+        }
+    </select>
+    <br />
+    <br />
+    <label for="edificio">Seleccione un edificio</label>
+    <select name="edificio" onchange="form.action = '/Venta/MostrarApartamentos'; form.submit();">
+        <option value="Seleccione un edificio" selected>Seleccione un edificio</option>
+        @foreach (var item in ObligatorioDominio.Sistema.Instancia.Edificios)
+        {
+        
+        if (item.Nombre == ViewBag.edificio)
+        {
+            <option value="@item.Nombre" selected>@item.ToString()</option>
+        }
+        else
+        {
+            <option value="@item.Nombre">@item.ToString()</option>
+            }
+
+        }
+    </select>
+    <br />
+    <br />
+    <label for="apartamento">Apartamentos</label>
+    <select name="apartamento">
+        <option value="Seleccione un edificio" selected>Seleccione un apartamento</option>
+        @if(ViewBag.edificio != null){
+            foreach (ObligatorioDominio.Apartamento a in ViewBag.apartamento)
+            {
+                <option value="@a.Numero">@a.ToString()</option>
+            }
+        }
+    </select>
+    <br />
+    <input type="submit" value="Vender"/>
+    <p>@ViewBag.vendido</p>
+</form>

@@ -49,6 +49,10 @@
         public virtual string Datos() {
             return "";
          }
-       
+
+        public override string ToString()
+        {
+            return this.Numero;
+        }
     }
 }

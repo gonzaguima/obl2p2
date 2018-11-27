@@ -488,6 +488,19 @@ namespace ObligatorioDominio
             }
             return aptos;
         }
+
+        public List<Apartamento> BuscarApartamentos(string nombre)
+        {
+            List<Apartamento> aptos = new List<Apartamento>();
+            Edificio e = BuscarEdificio(nombre);
+            if (e != null)
+            {
+                aptos = e.Apartamentos;
+            }
+            return aptos;
+        }
+
+
         #endregion
         //************* DATOS DE PRUEBA ******************
         public void CargarDatos()

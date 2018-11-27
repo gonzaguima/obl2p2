@@ -13,7 +13,7 @@ namespace ObligatorioDominio
         private int precio;
         private Apartamento apartamento;
         private Cliente cliente;
-        
+
         public Compra(DateTime fecha, string vendedor, int precio, Apartamento apartamento, Cliente cliente)
         {
             this.fecha = fecha;
@@ -21,6 +21,10 @@ namespace ObligatorioDominio
             this.precio = precio;
             this.apartamento = apartamento;
             this.cliente = cliente;
+        }
+        public override string ToString()
+        {
+            return this.fecha.ToString() + " " + this.apartamento.ToString()  ;
         }
     }
 }
