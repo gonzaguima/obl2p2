@@ -166,8 +166,11 @@ namespace ObligatorioDominio
             Cliente c = BuscarCliente(documento);
             if (c != null)
             {
-                Clientes.Remove(c);
-                baja = true;
+                if (c.Compras.Count == 0)
+                {
+                    Clientes.Remove(c);
+                    baja = true;
+                }
             }
             return baja;
         }

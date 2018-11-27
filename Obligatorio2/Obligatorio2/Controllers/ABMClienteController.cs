@@ -38,7 +38,7 @@ namespace Obligatorio2.Controllers
             if (Sistema.Instancia.BajaCliente(borrador))
             {
                 ViewBag.resultado = "Baja realizada con exito!";
-            }
+            } else { ViewBag.resultado = "Imposible borrar este cliente"; }
             return View("Baja");
         }
         [HttpPost]
@@ -52,6 +52,12 @@ namespace Obligatorio2.Controllers
             @ViewBag.telefono = c.Telefono;
             @ViewBag.user = c.User;
             @ViewBag.pass = c.Pass;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Mod(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        {
+
             return View();
         }
     }
