@@ -35,5 +35,20 @@ namespace ObligatorioDominio
         {
             return this.Nombre;
         }
+
+        internal Apartamento BuscarApto(string apartamento)
+        {
+            Apartamento apto = null;
+            int i = 0;
+            while (i < Apartamentos.Count && apto == null)
+            {
+                if (Apartamentos[i].ToString() == apartamento)
+                {
+                    apto = Apartamentos[i];
+                }
+                i++;
+            }
+            return apto;
+        }
     }
 }

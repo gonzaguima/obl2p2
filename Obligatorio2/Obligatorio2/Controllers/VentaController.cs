@@ -28,14 +28,17 @@ namespace Obligatorio2.Controllers
             ViewBag.vendido = "";
             if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
             {
-                DateTime fecha = DateTime.Now;
-                string nombreVendedor = (string)(Session["User"]);
-                Vendedor vendedor = Sistema.Instancia.BuscarVendedor(nombreVendedor);
-                Apartamento apto = Sistema.Instancia.buscarApto(apartamento);
-                Cliente c = Sistema.Instancia.BuscarCliente(cliente);
-                int precio = apto.PrecioBase;
-                c.Compras.Add(new Compra(fecha, vendedor, precio, apto, c));
-                ViewBag.vendido = "Venta realizada";
+                if (Sistema.Instancia.AltaVenta("vend1", apartamento, edificio, cliente))
+                {
+                    ViewBag.vendido = "Venta realizada";
+                }
+                //DateTime fecha = DateTime.Now;
+                //string nombreVendedor = (string)(Session["User"]);
+                //Vendedor vendedor = Sistema.Instancia.BuscarVendedor(nombreVendedor);
+                //Apartamento apto = Sistema.Instancia.buscarApto(apartamento);
+                //Cliente c = Sistema.Instancia.BuscarCliente(cliente);
+                //int precio = apto.PrecioBase;
+                //c.Compras.Add(new Compra(fecha, vendedor, precio, apto, c));
             }
             else
             {
