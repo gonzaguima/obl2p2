@@ -12,14 +12,14 @@ namespace Obligatorio2.Controllers
         // GET: ListadoClientes
         public ActionResult Index()
         {
-            List<Cliente> c = Sistema.Instancia.ClientesOrdenado();
+            List<Cliente> c = Sistema.Instancia.ClientesOrdenado(); //Pide la lista de clientes ordenada
             ViewBag.listado = c; 
             return View();
         }
         [HttpPost]
         public ActionResult Index(DateTime inicio, DateTime final)
         {
-            List<Cliente> c = Sistema.Instancia.FiltrarClientes(inicio, final);
+            List<Cliente> c = Sistema.Instancia.FiltrarClientes(inicio, final); //Pide la lista de clientes entre esas fechas y ordenada
             ViewBag.listado = c;
             return View();
         }

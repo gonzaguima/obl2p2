@@ -7,7 +7,7 @@
 
 
 <form method="post" action="~/ABMCliente/Mod">
-
+    <label>Seleccionar cliente a modificar:</label><br />
     <select name="cliente" onchange="form.action = '/ABMCliente/CargarDatos'; form.submit();">
         <option value="0" selected="selected">Seleccionar</option>
         @foreach (var item in ObligatorioDominio.Sistema.Instancia.Clientes)
@@ -15,8 +15,6 @@
             <option value="@item.Documento">@item.ToString()</option>
         }
     </select>
-    <br />
-    <button type="button" onclick="">Cargar datos</button> @*Ver como cargar los datos desde aca*@
     <br /><hr />
 
     <table>
