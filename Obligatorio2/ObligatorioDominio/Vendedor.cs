@@ -10,7 +10,6 @@ namespace ObligatorioDominio
     {
         public string User { get; set; }
         public string Pass { get; set; }
-        public List<Compra> Ventas { get; set; } = new List<Compra>();
         //Ver que atributos necesita. Sldos
         public Vendedor(string user, string pass)
         {

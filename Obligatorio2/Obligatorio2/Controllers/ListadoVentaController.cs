@@ -17,7 +17,7 @@ namespace Obligatorio2.Controllers
             {
                 ViewBag.listado = ventas;
             }
-            else { ViewBag.listado = "El usuario debe ser vendedor"; }
+            else { ViewBag.listado = "El usuario no ha efectuado ventas"; }
             return View();
         }
     }
