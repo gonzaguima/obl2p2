@@ -35,7 +35,8 @@ namespace Obligatorio2.Controllers
         public ActionResult Logout()
         {
             Session["User"] = null;
-            return View("~/home/index", true);
+            Session.Abandon();
+            return RedirectToAction("index");
         }
     }
 }
