@@ -21,7 +21,7 @@ namespace Obligatorio2.Controllers
             if (u != null) {
                 Session["User"] = user; //Guardo el nombre de usuario de quien se logueo
                 ViewBag.resultado = "Usuario valido.";
-                return View("~/home/index"); //Abro la pagina de inicio
+                return View("~/home/index", user); //Abro la pagina de inicio
             }
             else { ViewBag.resultado = "Usuario invalido."; return View(); }
             
@@ -30,7 +30,7 @@ namespace Obligatorio2.Controllers
         public ActionResult Logout()
         {
             Session["User"] = null;
-            return View("~/home/index");
+            return View("~/home/index", true);
         }
     }
 }
