@@ -58,15 +58,15 @@ namespace ObligatorioDominio
             return this.Nombre.CompareTo(c.Nombre);
         }
 
-        private Compra Compra(DateTime fecha, Vendedor vendedor, int precio, Apartamento apartamento, Cliente cliente)
-        {
-            Compra compra = new Compra(fecha, vendedor, precio, apartamento, cliente);
-            return compra;
-        }
+        //private Compra Compra(DateTime fecha, Vendedor vendedor, int precio, int comision, Apartamento apartamento, Cliente cliente)
+        //{
+        //    Compra compra = new Compra(fecha, vendedor, precio, comision, apartamento, cliente);
+        //    return compra;
+        //}
 
-        internal bool AltaCompra(Vendedor v, Edificio e, Apartamento apto)
+        internal bool AltaCompra(Vendedor v, Edificio e, Apartamento apto, int costo, int comision)
         {
-            Compras.Add(new Compra(DateTime.Now, v, 1500, apto, this));
+            Compras.Add(new Compra(DateTime.Now, v, costo, comision, apto, this));
             apto.Vendido = true;
             return true;
         }

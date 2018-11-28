@@ -82,13 +82,13 @@ namespace ObligatorioDominio
             return ventas;
         }
 
-        public bool AltaVenta(string vendedor, string apartamento, string edificio, string cliente)
+        public bool AltaVenta(string vendedor, string apartamento, string edificio, string cliente, int costo, int comision)
         {
             bool alta = false;
             Vendedor v = BuscarVendedor(vendedor);
             Edificio e = BuscarEdificio(edificio);
             Apartamento apto = e.BuscarApto(apartamento);
-            if(BuscarCliente(cliente).AltaCompra(v, e, apto))
+            if(BuscarCliente(cliente).AltaCompra(v, e, apto, costo, comision))
             {
                 alta = true;
             }

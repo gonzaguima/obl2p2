@@ -46,7 +46,12 @@
         }
     </select>
     <br />
+    <label for="costo">Ingrese costo:</label>
+    <input type="text" name="costo" />
     <br />
+    <label for="comision">Ingrese comision:</label>
+    <input type="text" name="comision" />
+    <br /><br />
     <input type="submit" value="Vender"/>
     <p>@ViewBag.vendido</p>
     @Html.ActionLink("<- Atras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
