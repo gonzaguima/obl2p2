@@ -527,9 +527,9 @@ namespace ObligatorioDominio
             this.AltaEdificio("TorreProfesionales", "Yaguaron", 5, "5E", 120, "E", 4, 4, true);
            
             //CLIENTE
-            this.AltaCliente("Pablo", "Ingold", "48684676", "Guazunambi", 094992993, "pingold", "123456");
-            this.AltaCliente("Juan", "Lopetegui", "34561871", "Silvestre", 092158632, "jlope", "147852");
-            this.AltaCliente("Alberto", "Villanueva", "41258643", "CerroLargo", 098124856, "avilla", "520147");
+            this.AltaCliente("Pablo", "Ingold", "48684676", "Guazunambi", 094992993);
+            this.AltaCliente("Juan", "Lopetegui", "34561871", "Silvestre", 092158632);
+            this.AltaCliente("Alberto", "Villanueva", "41258643", "CerroLargo", 098124856);
 
             //VENDEDOR
             this.AltaVendedor("vend1", "vend1111");
@@ -543,7 +543,7 @@ namespace ObligatorioDominio
             agregarApto("TorreProfesionales");
         }
         
-        public void agregarApto(string nombre)
+        private void agregarApto(string nombre)
         {
             Edificio e = BuscarEdificio(nombre);
             //OFICINAS
