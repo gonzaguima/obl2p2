@@ -18,12 +18,12 @@ namespace Obligatorio2.Controllers
         public ActionResult Baja() { return View(); }
         public ActionResult Mod() { return View(); }
         [HttpPost]
-        public ActionResult Alta(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        public ActionResult Alta(string nombre, string apellido, string documento, string direccion, int telefono)
         {
             //Recibe los datos del formulario 
-            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && telefono != 0 && pass != "" && user != "")
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && telefono != 0)
             { //Verifica que no sean vacios
-                if (Sistema.Instancia.AltaCliente(nombre, apellido, documento, direccion, telefono, user, pass))
+                if (Sistema.Instancia.AltaCliente(nombre, apellido, documento, direccion, telefono))
                 {
                     ViewBag.resultado = "Alta exitosa";
                 }

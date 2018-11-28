@@ -110,15 +110,15 @@ namespace ObligatorioDominio
         }
 
         //ABM Clientes
-        public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono)
         {
             bool alta = false;
-            if (nombre != "" && apellido != "" && documento != "" && direccion != "" && pass != "" && user != "") //Verifico que ninguno sea vacio
+            if (nombre != "" && apellido != "" && documento != "" && direccion != "") //Verifico que ninguno sea vacio
             {
                 Cliente c = BuscarCliente(documento); //Busco si ya existe el Cliente, comparando por documento
                 if (c == null) //Verifico que no exista
                 { //Si no existe, creo el nuevo Cliente
-                    c = new Cliente(nombre, apellido, documento, direccion, telefono, user, pass);
+                    c = new Cliente(nombre, apellido, documento, direccion, telefono);
                     Clientes.Add(c);
                     alta = true;
                 }

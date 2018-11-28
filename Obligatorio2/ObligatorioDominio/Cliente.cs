@@ -12,7 +12,7 @@ namespace ObligatorioDominio
         public string Direccion { get; set; }
         public int Telefono { get; set; }
         public List<Compra> Compras { get; set; } = new List<Compra>();
-        public Cliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
+        public Cliente(string nombre, string apellido, string documento, string direccion, int telefono)
         {
             this.Nombre = nombre;
             this.Apellido = apellido;
