@@ -9,10 +9,10 @@ namespace ObligatorioDominio
      public class Compra
     {
         public DateTime fecha { get; }
-        private Vendedor vendedor;
-        private int precio;
-        private Apartamento apartamento;
-        private Cliente cliente;
+        public Vendedor vendedor { get; }
+        public int precio { get; }
+        public Apartamento apartamento { get; }
+        public Cliente cliente { get; }
 
         public Compra(DateTime fecha, Vendedor vendedor, int precio, Apartamento apartamento, Cliente cliente)
         {
@@ -22,9 +22,10 @@ namespace ObligatorioDominio
             this.apartamento = apartamento;
             this.cliente = cliente;
         }
+        public Compra() { }
         public override string ToString()
         {
-            return this.fecha.ToString() + " " + this.apartamento.ToString()  ;
+            return this.fecha.ToString() + " " + this.apartamento.ToString();
         }
         public bool ExisteVend(Vendedor v)
         {

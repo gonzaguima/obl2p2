@@ -63,5 +63,10 @@ namespace ObligatorioDominio
             Compra compra = new Compra(fecha, vendedor, precio, apartamento, cliente);
             return compra;
         }
+
+        internal void AltaCompra(Vendedor v, Edificio e, Apartamento apto)
+        {
+            Compras.Add(new Compra(DateTime.Now, v, 1500, apto, this));
+        }
     }
 }
