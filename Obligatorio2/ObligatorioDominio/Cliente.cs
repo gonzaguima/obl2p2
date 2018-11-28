@@ -67,9 +67,9 @@ namespace ObligatorioDominio
         //    return compra;
         //}
 
-        internal bool AltaCompra(Vendedor v, Edificio e, Apartamento apto, int costo)
+        internal bool AltaCompra(Vendedor v, Edificio e, Apartamento apto, int costo, int comision)
         {
-            Compras.Add(new Compra(DateTime.Now, v, costo, apto, this));
+            Compras.Add(new Compra(DateTime.Now, v, costo, comision, apto, this));
             apto.Vendido = true;
             return true;
         }

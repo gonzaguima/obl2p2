@@ -13,7 +13,7 @@ namespace ObligatorioDominio
         private bool garaje;
         private int precioFinalCasa = 200000;
 
-        public CasaHabitacion(int dormitorios, int banios, bool garaje, int piso, string numero, int metraje, string orientacion, Edificio e):base(piso, numero, metraje, orientacion, e)
+        public CasaHabitacion(int dormitorios, int banios, bool garaje, int piso, string numero, int metraje, string orientacion):base(piso, numero, metraje, orientacion)
         {
             this.dormitorios = dormitorios;
             this.banios = banios;

@@ -8,14 +8,12 @@ namespace ObligatorioDominio
         private string nombre;
         private string direccion;
         private List<Apartamento> apartamentos;
-        public int Comision { get; set; }
         
-        public Edificio(string nombre, string direccion, List<Apartamento> apartamentos, int comision)
+        public Edificio(string nombre, string direccion, List<Apartamento> apartamentos)
         {
             this.nombre = nombre;
             this.direccion = direccion;
             this.apartamentos = apartamentos;
-            this.Comision = comision;
         }
 
 
