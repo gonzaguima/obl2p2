@@ -35,7 +35,7 @@ namespace Obligatorio2.Controllers
         [HttpPost]
         public ActionResult Baja(string borrador)
         {
-            if (Sistema.Instancia.BajaCliente(borrador))
+            if (Sistema.Instancia.BajaCliente(borrador)) //Envia el cliente a eliminar
             {
                 ViewBag.resultado = "Baja realizada con exito!";
             } else { ViewBag.resultado = "Imposible borrar este cliente"; }
@@ -44,7 +44,7 @@ namespace Obligatorio2.Controllers
 
         public ActionResult CargarDatos(string cliente)
         {
-            Cliente c = Sistema.Instancia.BuscarCliente(cliente);
+            Cliente c = Sistema.Instancia.BuscarCliente(cliente); //Manda a buscar el cliente, para cargar sus datos
             @ViewBag.nombre = c.Nombre;
             @ViewBag.apellido = c.Apellido;
             @ViewBag.documento = c.Documento;
@@ -55,7 +55,7 @@ namespace Obligatorio2.Controllers
         [HttpPost]
         public ActionResult Mod(string nombre, string apellido, string documento, string direccion, int telefono)
         {
-            if (Sistema.Instancia.ModCliente(nombre, apellido, documento, direccion, telefono))
+            if (Sistema.Instancia.ModCliente(nombre, apellido, documento, direccion, telefono)) //Envia el cliente para modificar
             {
                 ViewBag.resultado = "Modificacion exitosa";
             }

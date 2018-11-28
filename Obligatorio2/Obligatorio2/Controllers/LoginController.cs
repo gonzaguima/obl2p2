@@ -12,7 +12,7 @@ namespace Obligatorio2.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            Session["User"] = null;
+            //Session["User"] = null;
             return View();
         }
         [HttpPost]
