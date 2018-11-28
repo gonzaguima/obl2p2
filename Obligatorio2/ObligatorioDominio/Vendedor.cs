@@ -15,6 +15,9 @@ namespace ObligatorioDominio
             this.User = user;
             this.Pass = pass;
         }
-
+        public override string ToString()
+        {
+            return this.User;
+        }
     }
 }

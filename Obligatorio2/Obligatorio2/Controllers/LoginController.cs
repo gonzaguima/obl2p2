@@ -18,12 +18,17 @@ namespace Obligatorio2.Controllers
         public ActionResult Index(string user, string pass)
         {
             Vendedor u = Sistema.Instancia.BuscarUsuario(user, pass);
-            if (u != null) {
-                Session["User"] = user; //Guardo el nombre de usuario de quien se logueo
+            if (u != null)
+            {
+                Session["User"] = u; //Guardo el nombre de usuario de quien se logueo
                 ViewBag.resultado = "Usuario valido.";
-                return View("~/home/index", user); //Abro la pagina de inicio
+                return Redirect("~/home/index"); //Abro la pagina de inicio
             }
-            else { ViewBag.resultado = "Usuario invalido."; return View(); }
+            else
+            {
+                ViewBag.resultado = "Usuario invalido.";
+                return View();
+            }
             
         }
 

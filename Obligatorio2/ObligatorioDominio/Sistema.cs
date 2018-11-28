@@ -19,7 +19,7 @@ namespace ObligatorioDominio
         {
             Vendedor u = null;
             int x = 0;
-                while (x < Vendedores.Count && u == null) //Si no lo encuentro en cliente, lo busco en vendedor
+                while (x < Vendedores.Count && u == null) //lo busco en vendedor
                 {
                     if (Vendedores[x].User == user)
                     {
