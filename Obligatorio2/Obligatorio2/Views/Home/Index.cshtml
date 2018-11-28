@@ -6,13 +6,13 @@
 <h2>Menu</h2>
 
 <div>
-    @Html.ActionLink("Ingresar", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Venta", "Index", "Venta", new { area = "" }, new { @class = "navbar-brand" })
 
-    @Html.ActionLink("ABM Cliente", "Index", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Lista ventas vendedor", "Index", "ABMCliente", new { area = "" }, new { @class = "navbar-brand" })
 
     @Html.ActionLink("Listado Cliente", "Index", "ListadoClientes", new { area = "" }, new { @class = "navbar-brand" })
 
-    @Html.ActionLink("Venta", "Index", "Venta", new { area = "" }, new { @class = "navbar-brand" })
+    
     <br /><hr />
     <label>@ViewBag.resultado</label>
 </div>
