@@ -5,7 +5,7 @@
         private int piso;
         private string numero;
         private int metraje;
-        private int precioBase = 150000;
+        private int precioBase;
         private string orientacion;
 
         public Apartamento(int piso, string numero, int metraje, string orientacion)
@@ -37,7 +37,7 @@
         public int PrecioBase
         {
             get { return precioBase; }
-            set { precioBase = value; }
+            set { precioBase = 150000; }
         }
 
         public string Orientacion

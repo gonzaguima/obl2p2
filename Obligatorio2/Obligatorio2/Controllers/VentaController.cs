@@ -24,6 +24,7 @@ namespace Obligatorio2.Controllers
         //Crear nueva compra
         public ActionResult Alta(string documentoCliente, string nombreEdificio, string numeroApartamento)
         {
+
             ViewBag.vendido = "";
             if (documentoCliente != "Seleccione un cliente" && nombreEdificio != "Seleccione un edificio" && numeroApartamento != "Seleccione un apartamento")
             {
