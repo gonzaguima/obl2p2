@@ -30,10 +30,11 @@ namespace ObligatorioDominio
         {
                 bool val = false;
                 int i = 0;
-            if(fechaf != null && fechai != null) { 
+            if(fechaf != null && fechai != null)
+            { 
                 while (i < Compras.Count && val == false) //Recorro la lista, al encontrar al menos una, salgo del while
                 {
-                    if (Compras[i].fecha >= fechai && Compras[i].fecha <= fechaf) //Que este entre las 2 fechas
+                    if (Compras[i].fecha >= fechai.Date && Compras[i].fecha <= fechaf.Date) //Que este entre las 2 fechas
                     {
                         val = true;
                     }

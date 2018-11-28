@@ -9,16 +9,18 @@
     <table>
         <tr>
             <td><label for="inicio">Fecha inicio: </label></td>
-            <td><input type="date" name="inicio" required max="@DateTime.Now.ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")"/></td>
+            <td><input type="date" name="inicio" required max="@DateTime.Now.ToString("yyyy-MM-dd")"></td>
         </tr>
         <tr>
             <td><label for="final">Fecha final: </label></td>
-            <td><input type="date" name="final" required max="@DateTime.Now.ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")"/></td>
+            <td><input type="date" name="final" required max="@DateTime.Now.ToString("yyyy-MM-dd")"/></td>
         </tr>
     </table>
     <button type="submit" >Filtrar</button>
 </form>
 <hr />
+<p>@DateTime.Today.ToShortDateString()</p>
+
 <ul>
     @*Ordenar la lista previamente a recorrerla.*@
     @foreach (var item in ViewBag.listado)
