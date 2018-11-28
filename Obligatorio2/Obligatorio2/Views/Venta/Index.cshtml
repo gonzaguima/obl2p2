@@ -7,16 +7,7 @@
 
 <form method="post" action="~/Venta/Alta">
 
-    <label for="cliente">Seleccione un cliente</label>
-    <select name="cliente">
-        <option value="Seleccione un cliente" selected>Seleccione un cliente</option>
-        @foreach (var cli in ObligatorioDominio.Sistema.Instancia.Clientes)
-        {
-            <option value="@cli.Documento">@cli.ToString()</option>
-        }
-    </select>
-    <br />
-    <br />
+    
     <label for="edificio">Seleccione un edificio</label>
     <select name="edificio" onchange="form.action = '/Venta/MostrarApartamentos'; form.submit();">
         <option value="Seleccione un edificio" selected>Seleccione un edificio</option>
@@ -35,7 +26,6 @@
         }
     </select>
     <br />
-    <br />
     <label for="apartamento">Apartamentos</label>
     <select name="apartamento">
         <option value="Seleccione un edificio" selected>Seleccione un apartamento</option>
@@ -46,6 +36,16 @@
             }
         }
     </select>
+    <br />
+    <label for="cliente">Seleccione un cliente</label>
+    <select name="cliente">
+        <option value="Seleccione un cliente" selected>Seleccione un cliente</option>
+        @foreach (var cli in ObligatorioDominio.Sistema.Instancia.Clientes)
+        {
+            <option value="@cli.Documento">@cli.ToString()</option>
+        }
+    </select>
+    <br />
     <br />
     <input type="submit" value="Vender"/>
     <p>@ViewBag.vendido</p>
