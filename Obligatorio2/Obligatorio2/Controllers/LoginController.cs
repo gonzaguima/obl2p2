@@ -26,5 +26,11 @@ namespace Obligatorio2.Controllers
             else { ViewBag.resultado = "Usuario invalido."; return View(); }
             
         }
+
+        public ActionResult Logout()
+        {
+            Session["User"] = null;
+            return View("~/home/index");
+        }
     }
 }
