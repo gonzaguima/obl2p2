@@ -28,16 +28,19 @@ namespace ObligatorioDominio
 
         internal bool Filtrado(DateTime fechai, DateTime fechaf)
         {
-            bool val = false;
-            int i = 0;
-            while (i < Compras.Count && val == false) //Recorro la lista, al encontrar al menos una, salgo del while
-            {
-                if (Compras[i].fecha >= fechai && Compras[i].fecha <= fechaf) //Que este entre las 2 fechas
+                bool val = false;
+                int i = 0;
+            if(fechaf != null && fechai != null) { 
+                while (i < Compras.Count && val == false) //Recorro la lista, al encontrar al menos una, salgo del while
                 {
-                    val = true;
+                    if (Compras[i].fecha >= fechai && Compras[i].fecha <= fechaf) //Que este entre las 2 fechas
+                    {
+                        val = true;
+                    }
                 }
             }
             return val;
+
         }
 
         public List<Compra> ExisteVend(Vendedor v)
