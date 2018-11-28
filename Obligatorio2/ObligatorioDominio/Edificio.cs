@@ -50,5 +50,18 @@ namespace ObligatorioDominio
             }
             return apto;
         }
+
+        internal List<Apartamento> AgregarAptos()
+        {
+            List<Apartamento> n = new List<Apartamento>();
+            foreach(var i in Apartamentos)
+            {
+                if (!i.Vendido)
+                {
+                    n.Add(i);
+                }
+            }
+            return n;
+        }
     }
 }

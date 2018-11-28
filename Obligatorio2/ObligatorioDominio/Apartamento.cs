@@ -7,6 +7,7 @@
         private int metraje;
         private int precioBase;
         private string orientacion;
+        public bool Vendido { get; set; }
 
         public Apartamento(int piso, string numero, int metraje, string orientacion)
         {
@@ -14,6 +15,7 @@
             this.numero = numero;
             this.metraje = metraje;
             this.orientacion = orientacion;
+            this.Vendido = false;
         }
 
         public int Piso

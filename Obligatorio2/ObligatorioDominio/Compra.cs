@@ -25,7 +25,7 @@ namespace ObligatorioDominio
         public Compra() { }
         public override string ToString()
         {
-            return this.fecha.ToString() + " " + this.apartamento.ToString();
+            return this.cliente.ToString() + " | " + this.apartamento.ToString() + " | " + this.precio;
         }
         public bool ExisteVend(Vendedor v)
         {

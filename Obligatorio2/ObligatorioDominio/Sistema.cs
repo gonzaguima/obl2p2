@@ -514,7 +514,7 @@ namespace ObligatorioDominio
             Edificio e = BuscarEdificio(nombre);
             if (e != null)
             {
-                aptos = e.Apartamentos;
+                aptos = e.AgregarAptos();
             }
             return aptos;
         }
