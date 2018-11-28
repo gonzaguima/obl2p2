@@ -76,7 +76,7 @@ namespace ObligatorioDominio
             return alta;
         }
 
-        private Vendedor BuscarVendedor(string user) 
+        public Vendedor BuscarVendedor(string user) 
         {
             Vendedor v = null;
             int i = 0;
@@ -226,7 +226,7 @@ namespace ObligatorioDominio
 
                 CasaHabitacion aptoCasa = AltaApartamento(dormitorio, banios, garaje, piso, numero, metraje, orientacion);
 
-                if (!buscarApto(numero))
+                if (buscarApto(numero) == null)
                 {
                     edificio.Apartamentos.Add(aptoCasa);
 
@@ -264,7 +264,7 @@ namespace ObligatorioDominio
             {
                 Oficina aptoOficina = AltaApartamento(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion);
 
-                if (!buscarApto(numero))
+                if (buscarApto(numero) == null)
                 {
                     aModificar.Apartamentos.Add(aptoOficina);
                     mensaje = "Se agrego la oficina";
@@ -293,7 +293,7 @@ namespace ObligatorioDominio
             {
                 CasaHabitacion casa = AltaApartamento(dormitorio, banios, garaje, piso, numero, metraje, orientacion);
 
-                if (!buscarApto(numero))
+                if (buscarApto(numero) == null)
                 {
                     aModificar.Apartamentos.Add(casa);
                     mensaje = "Se agrego la CasaHabitacion";
@@ -328,7 +328,7 @@ namespace ObligatorioDominio
 
                 Oficina aptoOficina = AltaApartamento(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion);
 
-                if (!buscarApto(numero))
+                if (buscarApto(numero) == null)
                 {
                     edificio.Apartamentos.Add(aptoOficina);
 
@@ -378,11 +378,34 @@ namespace ObligatorioDominio
        
 
         //****************** metodo buscar apto *****************
-        public bool buscarApto(string numero)
+        //public bool buscarApto(string numero)
+        //{
+        //    bool existe = false;
+        //    int i = 0;
+
+        //    while (existe == false && i < Edificios.Count)
+        //    {
+        //        int j = 0;
+
+        //        while (existe == false && j < Edificios[i].Apartamentos.Count)
+        //        {
+        //            if (Edificios[i].Apartamentos[j].Numero == numero)
+        //            {
+        //                existe = true;
+        //            }
+        //            j++;
+        //        }
+        //        i++;
+        //    }
+
+        //    return existe;
+        //}
+
+        public Apartamento buscarApto(string numero)
         {
             bool existe = false;
             int i = 0;
-
+            Apartamento a = null;
             while (existe == false && i < Edificios.Count)
             {
                 int j = 0;
@@ -391,6 +414,7 @@ namespace ObligatorioDominio
                 {
                     if (Edificios[i].Apartamentos[j].Numero == numero)
                     {
+                        a = Edificios[i].Apartamentos[j];
                         existe = true;
                     }
                     j++;
@@ -398,7 +422,7 @@ namespace ObligatorioDominio
                 i++;
             }
 
-            return existe;
+            return a;
         }
 
 

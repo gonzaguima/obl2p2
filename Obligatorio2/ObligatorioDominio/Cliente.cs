@@ -56,5 +56,11 @@ namespace ObligatorioDominio
         {
             return this.Nombre.CompareTo(c.Nombre);
         }
+
+        private Compra Compra(DateTime fecha, Vendedor vendedor, int precio, Apartamento apartamento, Cliente cliente)
+        {
+            Compra compra = new Compra(fecha, vendedor, precio, apartamento, cliente);
+            return compra;
+        }
     }
 }

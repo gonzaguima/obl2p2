@@ -5,7 +5,7 @@
         private int piso;
         private string numero;
         private int metraje;
-        private static int precioBase = 150000;
+        private int precioBase = 150000;
         private string orientacion;
 
         public Apartamento(int piso, string numero, int metraje, string orientacion)
@@ -54,5 +54,7 @@
         {
             return this.Numero;
         }
+
+ 
     }
 }

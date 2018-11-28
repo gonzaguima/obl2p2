@@ -14,18 +14,34 @@ namespace Obligatorio2.Controllers
         {
             return View();
         }
-
+        //listado de apartamentos para vista
         public ActionResult MostrarApartamentos(string edificio)
         {
             ViewBag.Apartamento = Sistema.Instancia.BuscarApartamentos(edificio);
             ViewBag.Edificio = edificio;
             return View("index");
         }
-
-        public ActionResult Vender()
+        //Crear nueva compra
+        public ActionResult Alta(string documentoCliente, string nombreEdificio, string numeroApartamento)
         {
-            //implementar venta
+            ViewBag.vendido = "";
+            if (documentoCliente != "Seleccione un cliente" && nombreEdificio != "Seleccione un edificio" && numeroApartamento != "Seleccione un apartamento")
+            {
+                DateTime fecha = DateTime.Now;
+                string nombreVendedor = (string)(Session["User"]);
+                Vendedor vendedor = Sistema.Instancia.BuscarVendedor(nombreVendedor);
+                Apartamento apartamento = Sistema.Instancia.buscarApto(numeroApartamento);
+                Cliente cliente = Sistema.Instancia.BuscarCliente(documentoCliente);
+                int precio = apartamento.PrecioBase;
+                cliente.Compras.Add(new Compra(fecha, vendedor, precio, apartamento, cliente));
+                ViewBag.vendido = "Venta realizada";
+            }
+            else
+            {
+                ViewBag.vendido = "Revise valores seleccionados";
+            }
             return View();
         }
+
     }
 }

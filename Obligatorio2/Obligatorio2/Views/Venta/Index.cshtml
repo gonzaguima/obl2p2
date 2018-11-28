@@ -5,14 +5,14 @@
 
 <h2>Venta de apartamento</h2>
 
-<form method="post" action="~/Venta/Index">
+<form method="post" action="~/Venta/Alta">
 
     <label for="cliente">Seleccione un cliente</label>
     <select name="cliente">
         <option value="Seleccione un cliente" selected>Seleccione un cliente</option>
         @foreach (var cli in ObligatorioDominio.Sistema.Instancia.Clientes)
         {
-            <option value="@cli.ToString()">@cli.ToString()</option>
+            <option value="@cli.Documento">@cli.ToString()</option>
         }
     </select>
     <br />
