@@ -22,26 +22,26 @@ namespace Obligatorio2.Controllers
             return View("index");
         }
         //Crear nueva compra
-        public ActionResult Alta(string documentoCliente, string nombreEdificio, string numeroApartamento)
+        public ActionResult Alta(string cliente, string edificio, string apartamento)
         {
 
             ViewBag.vendido = "";
-            if (documentoCliente != "Seleccione un cliente" && nombreEdificio != "Seleccione un edificio" && numeroApartamento != "Seleccione un apartamento")
+            if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
             {
                 DateTime fecha = DateTime.Now;
                 string nombreVendedor = (string)(Session["User"]);
                 Vendedor vendedor = Sistema.Instancia.BuscarVendedor(nombreVendedor);
-                Apartamento apartamento = Sistema.Instancia.buscarApto(numeroApartamento);
-                Cliente cliente = Sistema.Instancia.BuscarCliente(documentoCliente);
-                int precio = apartamento.PrecioBase;
-                cliente.Compras.Add(new Compra(fecha, vendedor, precio, apartamento, cliente));
+                Apartamento apto = Sistema.Instancia.buscarApto(apartamento);
+                Cliente c = Sistema.Instancia.BuscarCliente(cliente);
+                int precio = apto.PrecioBase;
+                c.Compras.Add(new Compra(fecha, vendedor, precio, apto, c));
                 ViewBag.vendido = "Venta realizada";
             }
             else
             {
                 ViewBag.vendido = "Revise valores seleccionados";
             }
-            return View();
+            return View("index");
         }
     }
 }

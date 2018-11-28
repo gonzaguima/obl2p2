@@ -8,7 +8,7 @@
 <form method="post" action="~/Venta/Alta">
 
     <label for="cliente">Seleccione un cliente</label>
-    <select name="documentoCliente">
+    <select name="cliente">
         <option value="Seleccione un cliente" selected>Seleccione un cliente</option>
         @foreach (var cli in ObligatorioDominio.Sistema.Instancia.Clientes)
         {
@@ -18,7 +18,7 @@
     <br />
     <br />
     <label for="edificio">Seleccione un edificio</label>
-    <select name="nombreEdificio" onchange="form.action = '/Venta/MostrarApartamentos'; form.submit();">
+    <select name="edificio" onchange="form.action = '/Venta/MostrarApartamentos'; form.submit();">
         <option value="Seleccione un edificio" selected>Seleccione un edificio</option>
         @foreach (var item in ObligatorioDominio.Sistema.Instancia.Edificios)
         {
@@ -37,7 +37,7 @@
     <br />
     <br />
     <label for="apartamento">Apartamentos</label>
-    <select name="numeroApartamento">
+    <select name="apartamento">
         <option value="Seleccione un edificio" selected>Seleccione un apartamento</option>
         @if(ViewBag.edificio != null){
             foreach (ObligatorioDominio.Apartamento a in ViewBag.apartamento)
