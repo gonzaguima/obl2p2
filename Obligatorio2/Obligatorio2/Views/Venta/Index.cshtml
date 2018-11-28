@@ -12,7 +12,7 @@
         <option value="Seleccione un cliente" selected>Seleccione un cliente</option>
         @foreach (var cli in ObligatorioDominio.Sistema.Instancia.Clientes)
         {
-            <option value="@cli.ToString()" selected>@cli.ToString()</option>
+            <option value="@cli.ToString()">@cli.ToString()</option>
         }
     </select>
     <br />
