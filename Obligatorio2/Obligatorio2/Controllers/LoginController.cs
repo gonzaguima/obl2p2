@@ -12,7 +12,6 @@ namespace Obligatorio2.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            //Session["User"] = null;
             return View();
         }
         [HttpPost]
@@ -20,12 +19,12 @@ namespace Obligatorio2.Controllers
         {
             Vendedor u = Sistema.Instancia.BuscarUsuario(user, pass);
             if (u != null) {
-                ViewBag.resultado = "Usuario valido.";
                 Session["User"] = user; //Guardo el nombre de usuario de quien se logueo
-                Redirect("~/home/index"); //Abro la pagina de inicio
+                ViewBag.resultado = "Usuario valido.";
+                return View("~/home/index"); //Abro la pagina de inicio
             }
-            else { ViewBag.resultado = "Usuario invalido."; }
-            return View();
+            else { ViewBag.resultado = "Usuario invalido."; return View(); }
+            
         }
     }
 }

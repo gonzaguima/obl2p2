@@ -42,6 +42,5 @@ namespace Obligatorio2.Controllers
             }
             return View();
         }
-
     }
 }
