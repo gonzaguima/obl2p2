@@ -29,9 +29,10 @@ namespace ObligatorioDominio
         internal bool Filtrado(DateTime fechai, DateTime fechaf)
         {
             bool val = false;
-            foreach (var i in this.Compras)
+            int i = 0;
+            while (i < Compras.Count && val == false) //Recorro la lista, al encontrar al menos una, salgo del while
             {
-                if (i.fecha >= fechai && i.fecha <= fechaf)
+                if (Compras[i].fecha >= fechai && Compras[i].fecha <= fechaf) //Que este entre las 2 fechas
                 {
                     val = true;
                 }
@@ -42,9 +43,9 @@ namespace ObligatorioDominio
         public List<Compra> ExisteVend(Vendedor v)
         {
             List<Compra> esta = new List<Compra>();
-            foreach(var i in Compras)
+            foreach(var i in Compras) //Recorro compras para obtener las compras realizadas por este vendedor.
             {
-                if (i.ExisteVend(v))
+                if (i.ExisteVend(v)) 
                 {
                     esta.Add(i);
                 }
@@ -52,7 +53,7 @@ namespace ObligatorioDominio
             return esta;
         }
 
-        public int CompareTo(Cliente c)
+        public int CompareTo(Cliente c) //Metodo para el .Sort()
         {
             return this.Nombre.CompareTo(c.Nombre);
         }

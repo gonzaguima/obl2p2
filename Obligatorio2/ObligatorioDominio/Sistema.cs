@@ -14,43 +14,23 @@ namespace ObligatorioDominio
         //instancia
         private static Sistema instancia;
 
-        //Metodos para Usuario.
-
-        public object BuscarUsuario(string user, string pass)
+        //Metodo para Login.
+        public Vendedor BuscarUsuario(string user, string pass) //Validar Vendedor que se esta logueando
         {
-            object u = null;
+            Vendedor u = null;
             int x = 0;
                 while (x < Vendedores.Count && u == null) //Si no lo encuentro en cliente, lo busco en vendedor
                 {
                     if (Vendedores[x].User == user)
                     {
-                        if (Vendedores[x].Pass == pass)
+                        if (Vendedores[x].Pass == pass) //Verifica si la password es correcta y devuelve el objeto vendedor 
                         {
-                            u = Clientes[x];
+                            u = Vendedores[x];
                         }
                     }
                     x++;
                 }
             return u;
-        }
-
-        public Vendedor BuscarUsuarioV(object user)
-        {
-            Vendedor v = null;
-
-            if (user is Vendedor)
-            {
-                int i = 0;
-                while (i < Vendedores.Count && v == null)
-                {
-                    if (Vendedores[i].User == "vend1" || Vendedores[i].User == "vend2")
-                    {
-                        v = Vendedores[i];
-                    }
-                    i++;
-                }
-            }
-            return v;
         }
 
         //VENTAS
@@ -59,15 +39,7 @@ namespace ObligatorioDominio
             bool alta = false;
             if (user != "" && pass != "") //Verifico que no sean vacios
             {
-                if (Vendedores.Count != 0)
-                {
-                    if (BuscarVendedor(user) == null) //Busco si ya existe el Cliente, comparando por user
-                    {
-                        Vendedores.Add(new Vendedor(user, pass));
-                        alta = true;
-                    }
-                }
-                else
+                if (BuscarVendedor(user) == null) //Busco si ya existe el Cliente, comparando por user
                 {
                     Vendedores.Add(new Vendedor(user, pass));
                     alta = true;
@@ -80,7 +52,7 @@ namespace ObligatorioDominio
         {
             Vendedor v = null;
             int i = 0;
-            while (i < Vendedores.Count && v == null)
+            while (i < Vendedores.Count && v == null) //Recorro la lista, al encontrarlo salgo del while
             {
                 if (Vendedores[i].User == user)
                 {
@@ -93,14 +65,14 @@ namespace ObligatorioDominio
 
         public List<Compra> ListaVentas(string user)
         {
-            Vendedor v = BuscarVendedor(user);
-            List<Compra> ventas = new List<Compra>();
-            foreach (var i in Clientes)
+            Vendedor v = BuscarVendedor(user); //Obtengo el objeto del vendedor logueado
+            List<Compra> ventas = new List<Compra>(); //Inicio la lista para agregarle las Compras efectuadas por este vendedor
+            foreach (var i in Clientes) //Recorro los clientes, porque son quienes contienen las compras
             {
-                List<Compra> parcial = i.ExisteVend(v);
+                List<Compra> parcial = i.ExisteVend(v); //Agrego a una lista 
                 if (parcial != null)
                 {
-                    foreach (var j in parcial)
+                    foreach (var j in parcial) 
                     {
                         ventas.Add(j);
                     }
@@ -129,8 +101,8 @@ namespace ObligatorioDominio
         {
             Cliente c = null;
             int i = 0;
-                while (i < Clientes.Count && c == null) 
-                {
+                while (i < Clientes.Count && c == null) //Recorro la lista, al encontrarlo salgo del while
+            {
                     if (Clientes[i].Documento == documento)
                     {
                         c = Clientes[i];
@@ -160,12 +132,12 @@ namespace ObligatorioDominio
             bool mod = false;
             if (nombre != "" && apellido != "" && documento != "" && direccion != "")
             {
-                Cliente c = BuscarCliente(documento);
+                Cliente c = BuscarCliente(documento); //Tomo el documento para buscarlo.
                 if (c != null)
                 {
                     c.Nombre = nombre;
                     c.Apellido = apellido;
-                    //c.Documento = documento; El documento no se cambia.
+                    //El documento no se cambia.
                     c.Direccion = direccion;
                     c.Telefono = telefono;
                     mod = true;
@@ -180,12 +152,12 @@ namespace ObligatorioDominio
             //Filtrar por fecha
             foreach (var i in Clientes)
             {
-                if (i.Filtrado(fechai, fechaf))
-                {
+                if (i.Filtrado(fechai, fechaf)) //Si el cliente tiene alguna compra entre
+                {                               //estas 2 fechas, devuelve un true.
                     filtrada.Add(i);
                 }
             }
-            filtrada.Sort();
+            filtrada.Sort(); //Ordenar lista por el valor por defecto 
             return filtrada;
         }
 
