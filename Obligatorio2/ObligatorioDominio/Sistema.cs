@@ -88,7 +88,10 @@ namespace ObligatorioDominio
             Vendedor v = BuscarVendedor(vendedor);
             Edificio e = BuscarEdificio(edificio);
             Apartamento apto = e.BuscarApto(apartamento);
-            BuscarCliente(cliente).AltaCompra(v, e, apto);
+            if(BuscarCliente(cliente).AltaCompra(v, e, apto))
+            {
+                alta = true;
+            }
             return alta;
         }
 
