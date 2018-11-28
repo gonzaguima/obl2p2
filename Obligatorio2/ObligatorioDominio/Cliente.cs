@@ -38,6 +38,20 @@ namespace ObligatorioDominio
             }
             return val;
         }
+
+        public List<Compra> ExisteVend(Vendedor v)
+        {
+            List<Compra> esta = new List<Compra>();
+            foreach(var i in Compras)
+            {
+                if (i.ExisteVend(v))
+                {
+                    esta.Add(i);
+                }
+            }
+            return esta;
+        }
+
         public int CompareTo(Cliente c)
         {
             return this.Nombre.CompareTo(c.Nombre);

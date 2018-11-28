@@ -91,6 +91,24 @@ namespace ObligatorioDominio
             return v;
         }
 
+        public List<Compra> ListaVentas(string user)
+        {
+            Vendedor v = BuscarVendedor(user);
+            List<Compra> ventas = new List<Compra>();
+            foreach (var i in Clientes)
+            {
+                List<Compra> parcial = i.ExisteVend(v);
+                if (parcial != null)
+                {
+                    foreach (var j in parcial)
+                    {
+                        ventas.Add(j);
+                    }
+                }
+            }
+            return ventas;
+        }
+
         //ABM Clientes
         public bool AltaCliente(string nombre, string apellido, string documento, string direccion, int telefono, string user, string pass)
         {

@@ -12,10 +12,10 @@ namespace Obligatorio2.Controllers
         // GET: ListadoVenta
         public ActionResult Index()
         {
-            if (Session["User"] is Vendedor)
+            List<Compra> ventas = Sistema.Instancia.ListaVentas(Session["User"].ToString());
+            if (ventas.Count > 0)
             {
-                Vendedor v = Sistema.Instancia.BuscarUsuarioV(Session["User"]);
-                ViewBag.listado = v.Ventas;
+                ViewBag.listado = ventas;
             }
             else { ViewBag.listado = "El usuario debe ser vendedor"; }
             return View();
