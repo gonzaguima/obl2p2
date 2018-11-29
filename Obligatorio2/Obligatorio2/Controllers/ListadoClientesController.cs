@@ -19,8 +19,9 @@ namespace Obligatorio2.Controllers
         [HttpPost]
         public ActionResult Index(DateTime inicio, DateTime final)
         {
-            List<Cliente> c = Sistema.Instancia.FiltrarClientes(inicio, final); //Pide la lista de clientes entre esas fechas y ordenada
+            List<Cliente> c = Sistema.Instancia.FiltrarClientes(inicio, final, Session["User"].ToString()); //Pide la lista de clientes entre esas fechas y ordenada
             ViewBag.listado = c;
+            if (c.Count == 0) { ViewBag.error = "No dispone de ventas."; }
             return View();
         }
     }

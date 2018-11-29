@@ -26,22 +26,25 @@ namespace ObligatorioDominio
             return this.Nombre + " " + this.Apellido;
         }
 
-        internal bool Filtrado(DateTime fechai, DateTime fechaf)
+        internal bool Filtrado(DateTime fechai, DateTime fechaf, Vendedor v)
         {
-                bool val = false;
-                int i = 0;
+            bool val = false;
+            int i = 0;
             if(fechaf != null && fechai != null)
-            { 
+            {
                 while (i < Compras.Count && val == false) //Recorro la lista, al encontrar al menos una, salgo del while
                 {
-                    if (Compras[i].fecha >= fechai.Date && Compras[i].fecha <= fechaf.Date) //Que este entre las 2 fechas
+                    if (v.User == Compras[i].vendedor.User)
                     {
-                        val = true;
+                        if (Compras[i].fecha >= fechai.Date && Compras[i].fecha <= fechaf.Date) //Que este entre las 2 fechas
+                        {
+                            val = true;
+                        } 
                     }
+                    i++;
                 }
             }
             return val;
-
         }
 
         public List<Compra> ExisteVend(Vendedor v)

@@ -161,13 +161,14 @@ namespace ObligatorioDominio
             return mod;
         }
         
-        public List<Cliente> FiltrarClientes(DateTime fechai, DateTime fechaf)
+        public List<Cliente> FiltrarClientes(DateTime fechai, DateTime fechaf, string vend)
         {
             List<Cliente> filtrada = new List<Cliente>();
+            Vendedor v = BuscarVendedor(vend);
             //Filtrar por fecha
             foreach (var i in Clientes)
             {
-                if (i.Filtrado(fechai, fechaf)) //Si el cliente tiene alguna compra entre
+                if (i.Filtrado(fechai, fechaf, v)) //Si el cliente tiene alguna compra entre
                 {                               //estas 2 fechas, devuelve un true.
                     filtrada.Add(i);
                 }
