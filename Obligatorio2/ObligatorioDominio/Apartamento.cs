@@ -8,14 +8,16 @@
         private int precioBase;
         private string orientacion;
         public bool Vendido { get; set; }
+        public Edificio Edif { get; set; }
 
-        public Apartamento(int piso, string numero, int metraje, string orientacion)
+        public Apartamento(int piso, string numero, int metraje, string orientacion, Edificio edificio)
         {
             this.piso = piso;
             this.numero = numero;
             this.metraje = metraje;
             this.orientacion = orientacion;
             this.Vendido = false;
+            this.Edif = edificio;
         }
 
         public int Piso
@@ -50,14 +52,12 @@
         //metodo para polimorfismo
         public virtual string Datos()
         {
-            return "Piso: " + this.piso + " Metraje: " + this.metraje + " Orientación: " + this.orientacion;
+            return "Edificio: " + this.Edif + " Piso: " + this.piso + " Metraje: " + this.metraje + " Orientación: " + this.orientacion;
         }
 
         public override string ToString()
         {
             return this.Numero;
         }
-
- 
     }
 }
