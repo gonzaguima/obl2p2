@@ -82,13 +82,13 @@ namespace ObligatorioDominio
             return ventas;
         }
 
-        public bool AltaVenta(string vendedor, string apartamento, string edificio, string cliente, int costo, int comision)
+        public bool AltaVenta(string vendedor, string apartamento, string edificio, string cliente, int costo)
         {
             bool alta = false;
             Vendedor v = BuscarVendedor(vendedor);
             Edificio e = BuscarEdificio(edificio);
             Apartamento apto = e.BuscarApto(apartamento);
-            if(BuscarCliente(cliente).AltaCompra(v, e, apto, costo, comision))
+            if(BuscarCliente(cliente).AltaCompra(v, e, apto, costo))
             {
                 alta = true;
             }
@@ -186,22 +186,22 @@ namespace ObligatorioDominio
         #region obl1
 
         //crea un apartamento de tipo Oficina
-        public Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)
+        private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion, Edificio e)
         {
-            Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion);
+            Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso,  numero,  metraje,  orientacion, e);
             return oficina;
         }
 
         //crea un apartamento de tipo CasaHabitacion
-        public CasaHabitacion AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion)
+        private CasaHabitacion AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion, Edificio e)
         {
-            CasaHabitacion casa = new CasaHabitacion(dormitorio, banios, garaje, piso, numero, metraje, orientacion);
+            CasaHabitacion casa = new CasaHabitacion(dormitorio, banios, garaje, piso, numero, metraje, orientacion, e);
             return casa;
         }
 
 
         //***************metodo alta Edificio con CasaHabitacion**********************
-        public string AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
+        public string AltaEdificio(string nombreEdificio, string direccionEdificio, int comision, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
         {
             string mensaje;
             List<Apartamento> apartamentos = new List<Apartamento>();
@@ -211,9 +211,9 @@ namespace ObligatorioDominio
 
             if (edificio == null)
             {
-                edificio = new Edificio(nombreEdificio, direccionEdificio, apartamentos);
+                edificio = new Edificio(nombreEdificio, direccionEdificio, apartamentos, comision);
 
-                CasaHabitacion aptoCasa = AltaApartamento(dormitorio, banios, garaje, piso, numero, metraje, orientacion);
+                CasaHabitacion aptoCasa = AltaApartamento(dormitorio, banios, garaje, piso, numero, metraje, orientacion, edificio);
 
                 if (buscarApto(numero) == null)
                 {
@@ -255,9 +255,9 @@ namespace ObligatorioDominio
 
             if (edificio == null)
             {
-                edificio = new Edificio(nombreEdificio, direccionEdificio, apartamentos);
+                edificio = new Edificio(nombreEdificio, direccionEdificio, apartamentos, comision);
 
-                Oficina aptoOficina = AltaApartamento(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion);
+                Oficina aptoOficina = AltaApartamento(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion, edificio);
 
                 if (buscarApto(numero) == null)
                 {
@@ -374,14 +374,14 @@ namespace ObligatorioDominio
         {
             //Edificios CON OFICINAS
             //AltaApartamento(int piso, string numero, int metraje, string orientacion, string edificio, bool esOficina, int dormitorio, int banios, bool garaje, bool equipamiento, int puestosTrabajo)
-            this.AltaEdificio("Nostrum", "AvUruguay", 2, "2SO", 70, "SO", 2,true);
-            this.AltaEdificio("Altos", "CiudadVieja", 1, "1N", 20, "N", 3, true);
-            this.AltaEdificio("BPS", "ArenalGrande", 3, "3SO", 200, "SO", 5, true);
+            this.AltaEdificio("Nostrum", "AvUruguay", 12, 2, "2SO", 70, "SO", 2,true);
+            this.AltaEdificio("Altos", "CiudadVieja", 15, 1, "1N", 20, "N", 3, true);
+            this.AltaEdificio("BPS", "ArenalGrande", 17, 3, "3SO", 200, "SO", 5, true);
             //Edificios CON CASAS
             //AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje);
-            this.AltaEdificio("HBC", "AvRivera", 4, "4SO", 125, "SO", 2, 2, true);
-            this.AltaEdificio("TrumpTower", "PdeE", 4, "2S", 162, "S", 4, 1, true);
-            this.AltaEdificio("TorreProfesionales", "Yaguaron", 5, "5E", 120, "E", 4, 4, true);
+            this.AltaEdificio("HBC", "AvRivera", 16, 4, "4SO", 125, "SO", 2, 2, true);
+            this.AltaEdificio("TrumpTower", "PdeE", 23, 4, "2S", 162, "S", 4, 1, true);
+            this.AltaEdificio("TorreProfesionales", "Yaguaron", 7, 5, "5E", 120, "E", 4, 4, true);
            
             //CLIENTE
             this.AltaCliente("Pablo", "Ingold", "48684676", "Guazunambi", 094992993);
@@ -405,14 +405,14 @@ namespace ObligatorioDominio
             Edificio e = BuscarEdificio(nombre);
             //OFICINAS
             //this.AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion);
-            e.Apartamentos.Add(AltaApartamento(6, true, 3, "3E", 90, "E"));
-            e.Apartamentos.Add(AltaApartamento(3, true, 4, "4O", 55, "O"));
-            e.Apartamentos.Add(AltaApartamento(1, false, 1, "1S", 30, "S"));
+            e.Apartamentos.Add(AltaApartamento(6, true, 3, "3E", 90, "E", e));
+            e.Apartamentos.Add(AltaApartamento(3, true, 4, "4O", 55, "O", e));
+            e.Apartamentos.Add(AltaApartamento(1, false, 1, "1S", 30, "S", e));
             //APARTAMENTOS
             //AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion);
-            e.Apartamentos.Add(AltaApartamento(3, 1, false, 1, "1SE", 90, "SE"));
-            e.Apartamentos.Add(AltaApartamento(1, 1, false, 4, "4N", 30, "N"));
-            e.Apartamentos.Add(AltaApartamento(5, 2, true, 10, "10S", 150, "S"));
+            e.Apartamentos.Add(AltaApartamento(3, 1, false, 1, "1SE", 90, "SE", e));
+            e.Apartamentos.Add(AltaApartamento(1, 1, false, 4, "4N", 30, "N", e));
+            e.Apartamentos.Add(AltaApartamento(5, 2, true, 10, "10S", 150, "S", e));
         }
 
 

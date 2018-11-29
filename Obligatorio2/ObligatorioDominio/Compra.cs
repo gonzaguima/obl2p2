@@ -11,28 +11,28 @@ namespace ObligatorioDominio
         public DateTime fecha { get; }
         public Vendedor vendedor { get; }
         public int precio { get; }
-        public int comision { get; }
         public Apartamento apartamento { get; }
         public Cliente cliente { get; }
 
-        public Compra(DateTime fecha, Vendedor vendedor, int precio, int comision, Apartamento apartamento, Cliente cliente)
+        public Compra(DateTime fecha, Vendedor vendedor, int precio, Apartamento apartamento, Cliente cliente)
         {
             this.fecha = fecha.Date;
             this.vendedor = vendedor;
             this.precio = precio;
-            this.comision = comision;
             this.apartamento = apartamento;
             this.cliente = cliente;
         }
         public Compra() { }
         public override string ToString()
         {
-            return this.cliente.ToString() + " | " + this.apartamento.ToString() + " | " + this.precio;
+            float com = apartamento.Edif.Comision;
+            float por = com / 100;
+            return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: " + (precio * por);
         }
 
         public string mostrarCompra()
         {
-            return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: " + comision;
+            return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: ";
         }
         public bool ExisteVend(Vendedor v)
         {

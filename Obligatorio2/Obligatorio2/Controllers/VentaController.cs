@@ -22,13 +22,13 @@ namespace Obligatorio2.Controllers
             return View("index");
         }
         //Crear nueva compra
-        public ActionResult Alta(string cliente, string edificio, string apartamento, int costo, int comision)
+        public ActionResult Alta(string cliente, string edificio, string apartamento, int costo)
         {
 
             ViewBag.vendido = "";
             if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
             {
-                if (Sistema.Instancia.AltaVenta(Session["User"].ToString(), apartamento, edificio, cliente, costo, comision))
+                if (Sistema.Instancia.AltaVenta("vend1", apartamento, edificio, cliente, costo))
                 {
                     ViewBag.vendido = "Venta realizada";
                 }
