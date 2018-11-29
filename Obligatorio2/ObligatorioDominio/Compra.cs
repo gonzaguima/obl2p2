@@ -10,24 +10,26 @@ namespace ObligatorioDominio
     {
         public DateTime fecha { get; }
         public Vendedor vendedor { get; }
-        public int precio { get; }
+        public double precio { get; }
         public Apartamento apartamento { get; }
         public Cliente cliente { get; }
 
-        public Compra(DateTime fecha, Vendedor vendedor, int precio, Apartamento apartamento, Cliente cliente)
+        public Compra(DateTime fecha, Vendedor vendedor, Apartamento apartamento, Cliente cliente)
         {
             this.fecha = fecha.Date;
             this.vendedor = vendedor;
-            this.precio = precio;
+            //this.precio = precio;
+            this.precio = apartamento.Precio();
             this.apartamento = apartamento;
             this.cliente = cliente;
         }
         public Compra() { }
         public override string ToString()
         {
-            float com = apartamento.Edif.Comision;
-            float por = com / 100;
-            return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: " + (precio * por);
+            double com = apartamento.Edif.Comision;
+            double por = com / 100;
+            double comisionFinal = por * apartamento.Precio();
+            return " Cliente: " + this.cliente.ToString() + " Comision: " + (comisionFinal) + " Precio: " + apartamento.Precio();
         }
         public string idCompra()
         {

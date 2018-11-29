@@ -24,13 +24,13 @@ namespace Obligatorio2.Controllers
  
 
         //Crear nueva compra
-        public ActionResult Alta(string cliente, string edificio, string apartamento, int costo)
+        public ActionResult Alta(string cliente, string edificio, string apartamento)
         {
 
             ViewBag.vendido = "";
-            if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento" && costo >0)
+            if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
             {
-                if (Sistema.Instancia.AltaVenta(Session["User"].ToString(), apartamento, edificio, cliente, costo))
+                if (Sistema.Instancia.AltaVenta(Session["User"].ToString(), apartamento, edificio, cliente))
                 {
                     ViewBag.vendido = "Venta realizada";
                 }

@@ -11,7 +11,7 @@ namespace ObligatorioDominio
         private int dormitorios;
         private int banios;
         private bool garaje;
-        private int precioFinalCasa = 200000;
+        private int precioFinalCasa = 1000;
 
         public CasaHabitacion(int dormitorios, int banios, bool garaje, int piso, string numero, int metraje, string orientacion, Edificio e):base(piso, numero, metraje, orientacion, e)
         {
@@ -41,11 +41,34 @@ namespace ObligatorioDominio
             get { return precioFinalCasa; }
             set { precioFinalCasa = value; }
         }
-        //retorna el numero de apartamento que lo identifica
-        //public override string Datos()
-        //{
-        //    return this.Numero;
-        //}
+        public override double Precio()
+        {
+            double valor = (precioFinalCasa * Metraje);
+            if (garaje)
+            {
+                valor = valor + 2000;
+            }
+            if(dormitorios == 1 || dormitorios == 2)
+            {
+                valor = valor * 1.05;
+            }
+            else
+            {
+                if(dormitorios == 3 || dormitorios == 4)
+                {
+                    valor = valor * 1.1;
+                }
+                else
+                {
+                    if(dormitorios > 4)
+                    {
+                        valor = valor * 1.2;
+                    }
+                }
+            }
+
+            return valor;
+        }
 
     }
 }

@@ -25,19 +25,6 @@ namespace Obligatorio2.Controllers
             return View();
         }
 
-        //mostrar informacion de venta
-        public ActionResult MostrarVentas(string venta)
-        {
-            Compra l = (Compra)Session["compra"];
-            if (l != null)
-            {
-                if (l.apartamento.Piso + l.apartamento.Numero + l.apartamento.Orientacion + l.apartamento.Edif == venta)
-                {
-                    ViewBag.info = l.ToString();
-                }
-                //esto no quiere andar!!!!!!!!!
-            }
-            return RedirectToAction("index");
-        }
+        
     }
 }

@@ -46,9 +46,7 @@
         }
     </select>
     <br />
-    <label for="costo">Ingrese costo:</label>
-    <input type="number" name="costo" required/>
-    <br /><br />
+
     <input type="submit" value="Vender" min="0" required/>
     <p>@ViewBag.vendido</p>
     @Html.ActionLink("<- Atras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })

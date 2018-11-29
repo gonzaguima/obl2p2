@@ -10,7 +10,7 @@ namespace ObligatorioDominio
     {
         private int puestosTrabajo;
         private bool equipamiento;
-        private int precioFinalOficina = 250000;
+        private int precioFinalOficina = 2000;
 
         public Oficina(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion, Edificio e) : base(piso, numero, metraje, orientacion, e)
         {
@@ -28,6 +28,16 @@ namespace ObligatorioDominio
         {
             get { return equipamiento; }
             set { equipamiento = value; }
+        }
+
+        public override double Precio()
+        {
+            double valor = (precioFinalOficina * Metraje) + (puestosTrabajo * 400);
+           if (equipamiento)
+            {
+                valor = valor *  1.1;
+            }
+            return valor;
         }
         
         public int PrecioFinalOficina

@@ -55,6 +55,12 @@
             return "Edificio: " + this.Edif + " Piso: " + this.piso + " Metraje: " + this.metraje + " Orientación: " + this.orientacion;
         }
 
+        public virtual double Precio()
+        {
+            double valor = 0;
+            return valor;   
+        }
+
         public override string ToString()
         {
             return this.Numero;
