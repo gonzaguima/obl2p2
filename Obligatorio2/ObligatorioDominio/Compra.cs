@@ -29,10 +29,14 @@ namespace ObligatorioDominio
             float por = com / 100;
             return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: " + (precio * por);
         }
+        public string idCompra()
+        {
+            return apartamento.Piso + apartamento.Numero + apartamento.Orientacion + apartamento.Edif;
+        }
 
         public string mostrarCompra()
         {
-            return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: ";
+            return this.apartamento.Datos();
         }
         public bool ExisteVend(Vendedor v)
         {

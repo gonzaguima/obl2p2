@@ -36,9 +36,9 @@ namespace ObligatorioDominio
             set {precioFinalOficina = value; }
         }
         //retorna el numero del apartamento que lo identifica
-        public override string Datos()
-        {
-            return this.Numero;
-        }
+        //public override string Datos()
+        //{
+        //    return this.Numero;
+        //}
     }
 }

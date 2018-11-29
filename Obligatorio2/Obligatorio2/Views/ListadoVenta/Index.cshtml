@@ -4,25 +4,21 @@
 }
 
 <h2>Listado de ventas</h2>
-
-<ul>
-    @*Ordenar la lista previamente a recorrerla.*@
-    @foreach (var item in ViewBag.listado)
-    {
-        <li>@item.ToString()</li>
-    }
-</ul>
-<p>@ViewBag.error</p>
-<table>
-    <tr>
+<form method="post">
+    <label for="venta">Seleccione un edificio</label>
+    <select name="venta" onchange="form.action = '~/ListadoVenta/MostrarVentas'; form.submit();">
         @*Ordenar la lista previamente a recorrerla.*@
-        @foreach (var x in ViewBag.listado)
+        <option selected>Seleccione una venta</option>
+        @foreach (var item in ViewBag.listado)
         {
-            <td>@x.ToString()</td>
-            @*<td>@x.mostrarCompra()</td>*@
+            Session["compra"] = item;
+            <option value="item.idCompra()">@item.mostrarCompra()</option>
         }
-    </tr>
-</table>
+    </select>
+</form>
 
+    <p>@ViewBag.error</p>
+
+    <div>@ViewBag.info</div>
 
     @Html.ActionLink("<- Atras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
