@@ -17,6 +17,7 @@ namespace ObligatorioDominio
             this.puestosTrabajo = puestosTrabajo;
             this.equipamiento = equipamiento;
         }
+  
         public int PuestosTrabajo
         {
             get { return puestosTrabajo; }

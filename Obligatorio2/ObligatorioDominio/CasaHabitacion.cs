@@ -35,6 +35,12 @@ namespace ObligatorioDominio
             get { return garaje; }
             set { garaje = value; }
         }
+
+        public int PrecioFinalCasa
+        {
+            get { return precioFinalCasa; }
+            set { precioFinalCasa = value; }
+        }
         //retorna el numero de apartamento que lo identifica
         public override string Datos()
         {

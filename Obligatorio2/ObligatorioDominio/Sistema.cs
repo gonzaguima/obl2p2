@@ -187,7 +187,7 @@ namespace ObligatorioDominio
         //crea un apartamento de tipo Oficina
         private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion, Edificio e)
         {
-            Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso,  numero,  metraje,  orientacion, e);
+            Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion, e);
             return oficina;
         }
         //crea un apartamento de tipo CasaHabitacion
@@ -361,31 +361,6 @@ namespace ObligatorioDominio
             return c;
         }
 
-       
-
-        //****************** metodo buscar apto *****************
-        //public bool buscarApto(string numero)
-        //{
-        //    bool existe = false;
-        //    int i = 0;
-
-        //    while (existe == false && i < Edificios.Count)
-        //    {
-        //        int j = 0;
-
-        //        while (existe == false && j < Edificios[i].Apartamentos.Count)
-        //        {
-        //            if (Edificios[i].Apartamentos[j].Numero == numero)
-        //            {
-        //                existe = true;
-        //            }
-        //            j++;
-        //        }
-        //        i++;
-        //    }
-
-        //    return existe;
-        //}
 
         public Apartamento buscarApto(string numero)
         {
