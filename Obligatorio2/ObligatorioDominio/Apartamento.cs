@@ -48,9 +48,10 @@
             set { orientacion = value; }
         }
         //metodo para polimorfismo
-        public virtual string Datos() {
-            return "";
-         }
+        public virtual string Datos()
+        {
+            return "Piso: " + this.piso + " Metraje: " + this.metraje + " Orientación: " + this.orientacion;
+        }
 
         public override string ToString()
         {
