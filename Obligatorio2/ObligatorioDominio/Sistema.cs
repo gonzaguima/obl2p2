@@ -184,18 +184,21 @@ namespace ObligatorioDominio
         }
 
         #region obl1
+
         //crea un apartamento de tipo Oficina
-        private Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)
+        public Oficina AltaApartamento(int puestosTrabajo, bool equipamiento, int piso, string numero, int metraje, string orientacion)
         {
-            Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso,  numero,  metraje,  orientacion);
+            Oficina oficina = new Oficina(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion);
             return oficina;
         }
+
         //crea un apartamento de tipo CasaHabitacion
-        private CasaHabitacion AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion)
+        public CasaHabitacion AltaApartamento(int dormitorio, int banios, bool garaje, int piso, string numero, int metraje, string orientacion)
         {
             CasaHabitacion casa = new CasaHabitacion(dormitorio, banios, garaje, piso, numero, metraje, orientacion);
             return casa;
         }
+
 
         //***************metodo alta Edificio con CasaHabitacion**********************
         public string AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
@@ -240,65 +243,7 @@ namespace ObligatorioDominio
 
         }
 
-        //************************************** metodo alta Oficina en edificio existente **********************
-        public string AgregarApartamento(string nombreEdificio, int piso, string numero, string orientacion, int metraje, int puestosTrabajo, bool equipamiento)
-        {
-            string mensaje;
-            Edificio aModificar = BuscarEdificio(nombreEdificio);
-
-            if (aModificar != null)
-            {
-                Oficina aptoOficina = AltaApartamento(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion);
-
-                if (buscarApto(numero) == null)
-                {
-                    aModificar.Apartamentos.Add(aptoOficina);
-                    mensaje = "Se agrego la oficina";
-                }else
-                {
-                    mensaje = "El apartamento ya existe";
-                }
-
-            }
-            else
-            {
-                mensaje = "El edificio no existe";
-            }
-
-            return mensaje;
-        }
-
-
-        // ******************************************* metodo alta CasaHabitacion en edificio existente *************
-        public string AgregarApartamento(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int dormitorio, int banios, bool garaje)
-        {
-            string mensaje;
-            Edificio aModificar = BuscarEdificio(nombreEdificio);
-
-            if (aModificar != null)
-            {
-                CasaHabitacion casa = AltaApartamento(dormitorio, banios, garaje, piso, numero, metraje, orientacion);
-
-                if (buscarApto(numero) == null)
-                {
-                    aModificar.Apartamentos.Add(casa);
-                    mensaje = "Se agrego la CasaHabitacion";
-                }
-                else
-                {
-                    mensaje = "El apartamento ya existe";
-                }
-
-            }
-            else
-            {
-                mensaje = "El edificio no existe";
-            }
-
-            return mensaje;
-        }
-
-        //**********************metodo alta Edificio con Oficina***************************
+        
         public string AltaEdificio(string nombreEdificio, string direccionEdificio, int piso, string numero, int metraje, string orientacion, int puestosTrabajo, bool equipamiento)
         
         {
@@ -361,32 +306,6 @@ namespace ObligatorioDominio
             return c;
         }
 
-       
-
-        //****************** metodo buscar apto *****************
-        //public bool buscarApto(string numero)
-        //{
-        //    bool existe = false;
-        //    int i = 0;
-
-        //    while (existe == false && i < Edificios.Count)
-        //    {
-        //        int j = 0;
-
-        //        while (existe == false && j < Edificios[i].Apartamentos.Count)
-        //        {
-        //            if (Edificios[i].Apartamentos[j].Numero == numero)
-        //            {
-        //                existe = true;
-        //            }
-        //            j++;
-        //        }
-        //        i++;
-        //    }
-
-        //    return existe;
-        //}
-
         public Apartamento buscarApto(string numero)
         {
             bool existe = false;
@@ -411,26 +330,7 @@ namespace ObligatorioDominio
             return a;
         }
 
-
-
-        //*************metodo listado apartamentos por precio***********
-        public List<Apartamento> ListadoAptoPrecio(int menor, int mayor)
-        {
-            List<Apartamento> rango = new List<Apartamento>();
-            foreach (Edificio e in Edificios)
-            {
-                foreach (Apartamento a in e.Apartamentos)
-                {
-                    if (a.PrecioBase >= menor && a.PrecioBase <= mayor)
-                    {
-                        rango.Add(a);
-                    }
-                }
-            }
-            return rango;
-        }
-
-        //*********************** existencia de apto segun rango de metrajes ****************************
+                
         public bool HayApto(int menor, int mayor)
         {
             bool existe = false;
@@ -454,60 +354,7 @@ namespace ObligatorioDominio
             return existe;
         }
 
-
-        //************************ listado Edificios por rango de metrajes *********************************
-        public List<Edificio> ListadoEdificios(int menorMetraje, int mayorMetraje, string orientacion)
-        {
-            List<Edificio> listadoEdificios = new List<Edificio>();
-
-            foreach (Edificio e in Edificios)
-            {
-                if (menorMetraje != 0 && mayorMetraje != 0)
-                    foreach (Apartamento a in e.Apartamentos)
-                    {
-                        if (a.Metraje >= menorMetraje && a.Metraje <= mayorMetraje && a.Orientacion == orientacion)
-                        {
-                            Edificio encontrado = new Edificio(e.Nombre, e.Direccion, e.Apartamentos);
-                            listadoEdificios.Add(encontrado);
-                        }
-                    }
-            }
-            return listadoEdificios;
-        }
-
-        //*********** metodo alta apartamento ******************
-        public string AltaApartamento(int piso, string numero, int metraje, string orientacion, string edificio, bool esOficina, int dormitorio, int banios, bool garaje, bool equipamiento, int puestosTrabajo)
-        {
-            string mensaje = "";
-            Edificio e = BuscarEdificio(edificio);
-            if (e != null)
-            {
-                if (esOficina)
-                {
-                    e.Apartamentos.Add(new Oficina(puestosTrabajo, equipamiento, piso, numero, metraje, orientacion));
-                }
-                else
-                {
-                    e.Apartamentos.Add(new CasaHabitacion(dormitorio, banios, garaje, piso, numero, metraje, orientacion));
-                }
-            }else { mensaje = "El edificio no existe."; }
-            return mensaje;
-        }
-
-        //***Metodo muestra de aptos******
-        public List<Apartamento> CargaAptos()
-        {
-            List<Apartamento> aptos = new List<Apartamento>();
-            foreach (Edificio e in Edificios)
-            {
-                foreach (Apartamento a in e.Apartamentos)
-                {
-                    aptos.Add(a);
-                }
-            }
-            return aptos;
-        }
-
+              
         public List<Apartamento> BuscarApartamentos(string nombre)
         {
             List<Apartamento> aptos = new List<Apartamento>();

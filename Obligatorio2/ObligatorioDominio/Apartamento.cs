@@ -53,6 +53,7 @@
             return "Piso: " + this.piso + " Metraje: " + this.metraje + " Orientación: " + this.orientacion;
         }
 
+        
         public override string ToString()
         {
             return this.Numero;
