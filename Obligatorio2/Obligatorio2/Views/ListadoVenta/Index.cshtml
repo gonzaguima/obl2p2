@@ -11,5 +11,18 @@
     {
         <li>@item.ToString()</li>
     }
-    @Html.ActionLink("<- Atras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 </ul>
+<p>@ViewBag.error</p>
+<table>
+    <tr>
+        @*Ordenar la lista previamente a recorrerla.*@
+        @foreach (var x in ViewBag.listado)
+        {
+            <td>@x.ToString()</td>
+            @*<td>@x.mostrarCompra()</td>*@
+        }
+    </tr>
+</table>
+
+
+    @Html.ActionLink("<- Atras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })

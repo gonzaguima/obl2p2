@@ -22,28 +22,28 @@ namespace Obligatorio2.Controllers
             return View("index");
         }
         //Crear nueva compra
-        public ActionResult Alta(string cliente, string edificio, string apartamento, int costo)
+        public ActionResult Alta(string cliente, string edificio, string apartamento, int costo, int comision)
         {
 
             ViewBag.vendido = "";
-                if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
+            if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
+            {
+                if (Sistema.Instancia.AltaVenta("vend1", apartamento, edificio, cliente, costo, comision))
                 {
-                    if (Sistema.Instancia.AltaVenta(Session["User"].ToString(), apartamento, edificio, cliente, costo))
-                    {
-                        ViewBag.vendido = "Venta realizada";
-                    }
-                    //DateTime fecha = DateTime.Now;
-                    //string nombreVendedor = (string)(Session["User"]);
-                    //Vendedor vendedor = Sistema.Instancia.BuscarVendedor(nombreVendedor);
-                    //Apartamento apto = Sistema.Instancia.buscarApto(apartamento);
-                    //Cliente c = Sistema.Instancia.BuscarCliente(cliente);
-                    //int precio = apto.PrecioBase;
-                    //c.Compras.Add(new Compra(fecha, vendedor, precio, apto, c));
+                    ViewBag.vendido = "Venta realizada";
                 }
-                else
-                {
-                    ViewBag.vendido = "Revise valores seleccionados";
-                }
+                //DateTime fecha = DateTime.Now;
+                //string nombreVendedor = (string)(Session["User"]);
+                //Vendedor vendedor = Sistema.Instancia.BuscarVendedor(nombreVendedor);
+                //Apartamento apto = Sistema.Instancia.buscarApto(apartamento);
+                //Cliente c = Sistema.Instancia.BuscarCliente(cliente);
+                //int precio = apto.PrecioBase;
+                //c.Compras.Add(new Compra(fecha, vendedor, precio, apto, c));
+            }
+            else
+            {
+                ViewBag.vendido = "Revise valores seleccionados";
+            }
             return View("index");
         }
     }

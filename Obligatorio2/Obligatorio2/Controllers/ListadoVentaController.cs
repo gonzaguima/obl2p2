@@ -17,7 +17,10 @@ namespace Obligatorio2.Controllers
             {
                 ViewBag.listado = ventas;
             }
-            else { ViewBag.listado = "El usuario no ha efectuado ventas"; } //Si el usuario no tiene ventas
+            else {
+                ViewBag.listado = "";
+                ViewBag.error = "El usuario no ha efectuado ventas";
+            } //Si el usuario no tiene ventas
             return View();
         }
     }

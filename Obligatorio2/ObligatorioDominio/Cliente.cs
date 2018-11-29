@@ -30,10 +30,11 @@ namespace ObligatorioDominio
         {
                 bool val = false;
                 int i = 0;
-            if(fechaf != null && fechai != null) { 
+            if(fechaf != null && fechai != null)
+            { 
                 while (i < Compras.Count && val == false) //Recorro la lista, al encontrar al menos una, salgo del while
                 {
-                    if (Compras[i].fecha >= fechai && Compras[i].fecha <= fechaf) //Que este entre las 2 fechas
+                    if (Compras[i].fecha >= fechai.Date && Compras[i].fecha <= fechaf.Date) //Que este entre las 2 fechas
                     {
                         val = true;
                     }
@@ -67,9 +68,9 @@ namespace ObligatorioDominio
         //    return compra;
         //}
 
-        internal bool AltaCompra(Vendedor v, Edificio e, Apartamento apto, int costo)
+        internal bool AltaCompra(Vendedor v, Edificio e, Apartamento apto, int costo, int comision)
         {
-            Compras.Add(new Compra(DateTime.Now, v, costo, apto, this));
+            Compras.Add(new Compra(DateTime.Now, v, costo, comision, apto, this));
             apto.Vendido = true;
             return true;
         }
