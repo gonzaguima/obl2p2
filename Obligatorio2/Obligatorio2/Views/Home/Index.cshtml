@@ -12,6 +12,7 @@
 
     @Html.ActionLink("Listado Cliente", "Index", "ListadoClientes", new { area = "" }, new { @class = "navbar-brand" })
 
-    <br /><hr />
-    @*<label>@Session["User"].ToString()</label>*@
+    <br />
+    <hr />
+    <label>Logueado : @Session["User"].ToString()</label>
 </div>

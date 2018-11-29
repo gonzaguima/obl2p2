@@ -28,7 +28,7 @@ namespace Obligatorio2.Controllers
             ViewBag.vendido = "";
             if (cliente != "Seleccione un cliente" && edificio != "Seleccione un edificio" && apartamento != "Seleccione un apartamento")
             {
-                if (Sistema.Instancia.AltaVenta("vend1", apartamento, edificio, cliente, costo, comision))
+                if (Sistema.Instancia.AltaVenta(Session["User"].ToString(), apartamento, edificio, cliente, costo, comision))
                 {
                     ViewBag.vendido = "Venta realizada";
                 }
