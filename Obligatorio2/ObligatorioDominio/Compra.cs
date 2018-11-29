@@ -28,8 +28,14 @@ namespace ObligatorioDominio
         public Compra() { }
         public override string ToString()
         {
-            return this.cliente.ToString() + " | " + this.apartamento.ToString() + " | " + this.precio + " | " + this.fecha;
+            return this.cliente.ToString() + " | " + this.apartamento.ToString() + " | " + this.precio;
         }
+
+        public string mostrarCompra()
+        {
+            return this.apartamento.Datos() + " Cliente: " + this.cliente.ToString() + " Comision: " + comision;
+        }
+
         public bool ExisteVend(Vendedor v)
         {
             bool esta = false;

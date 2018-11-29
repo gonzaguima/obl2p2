@@ -49,7 +49,7 @@
         }
         //metodo para polimorfismo
         public virtual string Datos() {
-            return "";
+            return "Piso: " + this.piso + " Metraje: " + this.metraje + " Orientación: " + this.orientacion; 
          }
 
         public override string ToString()
